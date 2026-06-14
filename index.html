@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Class of '97 — Reunion Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#0f1923;color:#fff;min-height:100vh}
+
+/* ── Top Nav ── */
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#0a1220;border-bottom:1.5px solid #1e3050;position:sticky;top:0;z-index:100}
+.topnav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;color:#7dd3fc;text-transform:uppercase}
+.topnav-tabs{display:flex;gap:6px}
+.ntb{padding:7px 18px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-weight:700;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.ntb.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.ntb:not(.active){background:#1a2740;color:#93c5fd}
+
+/* ── Pages ── */
+.page{display:none;padding:24px 16px 48px}
+.page.active{display:block}
+
+/* ── Shared header ── */
+.hdr{text-align:center;margin-bottom:24px}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:#7dd3fc;text-transform:uppercase;margin-bottom:6px}
+h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;margin-bottom:4px}
+.sub{font-size:11px;color:#7dd3fc;font-family:'DM Mono',monospace}
+
+/* ── Stats grid ── */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+@media(min-width:480px){.stats{grid-template-columns:repeat(4,1fr)}}
+.sc{border-radius:14px;padding:14px 12px;text-align:center;background:#1a2740;border:1.5px solid #2e4060}
+.sl{font-size:10px;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.sv{font-size:20px;font-weight:700;font-family:'DM Mono',monospace}
+
+/* ── Inner tabs (kitty) ── */
+.itabs{display:flex;gap:8px;margin-bottom:16px}
+.itb{padding:7px 20px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-weight:700;font-size:13px;font-family:'DM Sans',sans-serif}
+.itb.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.itb:not(.active){background:#1a2740;color:#93c5fd}
+
+/* ── Table ── */
+.tw{overflow-x:auto;border-radius:12px;border:1.5px solid #2e4060;background:#131f30}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{background:#1a2e47}
+th{padding:11px 12px;text-align:left;font-size:10px;color:#7dd3fc;letter-spacing:1.5px;font-weight:700;white-space:nowrap;text-transform:uppercase;border-bottom:1.5px solid #2e4060}
+tbody tr{border-top:1px solid #1e3050}
+tbody tr:nth-child(even){background:#162033}
+tbody tr:hover{background:#1e3555}
+td{padding:10px 12px;vertical-align:middle}
+.dd{white-space:nowrap;color:#fcd34d;font-size:12px;font-family:'DM Mono',monospace;font-weight:500}
+.dn{font-weight:700;color:#fff;font-size:14px}
+.rb{font-family:'DM Mono',monospace;font-size:11px;background:#4c1d95;color:#ddd6fe;padding:3px 8px;border-radius:6px;font-weight:600}
+.nn{color:#4a6080;font-size:11px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.bin{background:#064e3b;color:#6ee7b7;border:1px solid #10b981}
+.bout{background:#7f1d1d;color:#fca5a5;border:1px solid #ef4444}
+.da{font-weight:700;font-family:'DM Mono',monospace;white-space:nowrap;font-size:13px}
+.dr{font-weight:700;color:#60a5fa;font-family:'DM Mono',monospace;white-space:nowrap;font-size:13px}
+.dn2{color:#94a3b8;font-size:12px}
+
+/* ── Contributors ── */
+.summary{display:flex;flex-direction:column;gap:10px}
+.smc{display:flex;align-items:center;justify-content:space-between;background:#1a2740;border-radius:12px;padding:14px 16px;border:1.5px solid #2e4060}
+.smn{font-weight:700;color:#fff;margin-bottom:3px;font-size:15px}
+.smr{font-family:'DM Mono',monospace;font-size:11px;color:#c4b5fd;font-weight:600}
+.smnr{font-size:11px;color:#4a6080}
+.sma{font-weight:700;font-size:18px;color:#34d399;font-family:'DM Mono',monospace}
+
+/* ── Budget planner ── */
+.bsec{background:#1a2740;border:1.5px solid #2e4060;border-radius:14px;padding:18px;margin-bottom:16px}
+.bsec-title{font-size:10px;letter-spacing:2px;color:#7dd3fc;font-weight:700;text-transform:uppercase;margin-bottom:14px;font-family:'DM Mono',monospace}
+.brow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1e3050}
+.brow:last-child{border-bottom:none}
+.brow-label{font-size:14px;color:#fff;font-weight:600}
+.brow-sub{font-size:11px;color:#64748b;margin-top:2px}
+.brow-right{display:flex;align-items:center;gap:10px}
+.binp{background:#0f1923;border:1.5px solid #2e4060;border-radius:8px;color:#f1f5f9;padding:6px 10px;font-size:13px;font-family:'DM Mono',monospace;outline:none;width:110px;text-align:right}
+.bval{font-family:'DM Mono',monospace;font-size:14px;color:#34d399;font-weight:700;min-width:100px;text-align:right}
+.bval.out{color:#f87171}
+.bval.blue{color:#60a5fa}
+.bval.gold{color:#fcd34d}
+.btotal-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0 0;margin-top:8px;border-top:2px solid #2e4060}
+.btotal-label{font-size:12px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:1px;font-family:'DM Mono',monospace}
+.btotal-val{font-family:'DM Mono',monospace;font-size:16px;font-weight:700}
+.buffer-card{border-radius:14px;padding:16px 18px;margin-bottom:16px;border:1.5px solid}
+.bc-label{font-size:10px;letter-spacing:2px;font-weight:700;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:6px}
+.bc-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:700}
+.bc-note{font-size:11px;margin-top:6px;opacity:.7}
+.bsplit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:480px){.bsplit{grid-template-columns:1fr}}
+.perhead{background:#1a2740;border:1.5px solid #2e4060;border-radius:14px;padding:14px;text-align:center}
+.perhead .sl{font-size:10px;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.perhead .sv{font-size:20px;font-weight:700;font-family:'DM Mono',monospace;color:#fcd34d}
+
+/* ── Footer ── */
+.footer{text-align:center;font-size:11px;color:#2e4060;margin-top:24px;font-family:'DM Mono',monospace}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="topnav">
+  <div class="topnav-brand">&#127891; Class of '97 · Dr. SACOE</div>
+  <div class="topnav-tabs">
+    <button class="ntb active" onclick="showPage('kitty')">💰 Kitty</button>
+    <button class="ntb" onclick="showPage('budget')">📊 Budget</button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════
+     PAGE 1 — KITTY TRACKER
+════════════════════════════════════ -->
+<div id="page-kitty" class="page active">
+  <div class="hdr">
+    <div class="eyebrow">Class of 1997 &middot; Reunion Fund</div>
+    <h1>&#x1F4B0; Kitty Tracker</h1>
+    <div class="sub">Canara SB &middot; A/c &middot;&middot;&middot;3692 &middot; As of 14 Jun 2026</div>
+  </div>
+  <div class="stats" id="k-stats"></div>
+  <div class="itabs">
+    <button class="itb active" onclick="setKittyTab('ledger')">&#x1F4CB; Ledger</button>
+    <button class="itb" onclick="setKittyTab('summary')">&#x1F465; Contributors</button>
+  </div>
+  <div id="k-view"></div>
+  <div class="footer">Canara SB &middot;&middot;&middot;3692 &middot; Tracked from May 2026</div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE 2 — BUDGET PLANNER
+════════════════════════════════════ -->
+<div id="page-budget" class="page">
+  <div class="hdr">
+    <div class="eyebrow">Class of 1997 &middot; 25 July 2026</div>
+    <h1>&#x1F4CA; Budget Planner</h1>
+    <div class="sub">Dr. Sivanthi Aditanar College of Engineering &middot; Tiruchendur</div>
+  </div>
+
+  <!-- Key inputs -->
+  <div class="bsec">
+    <div class="bsec-title">Key Inputs</div>
+    <div class="brow">
+      <div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-kitty" value="234500" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-heads" value="60" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-contrib" value="46" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-std" value="5000" oninput="renderBudget()"/></div>
+    </div>
+  </div>
+
+  <!-- Fixed expenses -->
+  <div class="bsec">
+    <div class="bsec-title">Fixed Expenses</div>
+    <div class="brow">
+      <div><div class="brow-label">Photography</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-photo" value="15000" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Local Transport</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-transport" value="5000" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Decoration</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-decor" value="5000" oninput="renderBudget()"/></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Banner / Photo Booth</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-banner" value="5000" oninput="renderBudget()"/></div>
+    </div>
+    <div class="btotal-row">
+      <div class="btotal-label">Total Fixed</div>
+      <div class="btotal-val" id="b-total-fixed" style="color:#f87171"></div>
+    </div>
+  </div>
+
+  <!-- Variable expenses -->
+  <div class="bsec">
+    <div class="bsec-title">Variable Expenses <span style="color:#4a6080;font-size:10px;font-weight:400">per head</span></div>
+    <div class="brow">
+      <div><div class="brow-label">Food &amp; Refreshments</div><div class="brow-sub" id="b-food-sub"></div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-food" value="1000" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div>
+    </div>
+    <div class="brow">
+      <div><div class="brow-label">Gifts / Mementos</div><div class="brow-sub" id="b-gifts-sub"></div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-gifts" value="1200" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div>
+    </div>
+    <div class="btotal-row">
+      <div class="btotal-label">Total Variable</div>
+      <div class="btotal-val" id="b-total-var" style="color:#f87171"></div>
+    </div>
+  </div>
+
+  <!-- Contingency -->
+  <div class="bsec">
+    <div class="bsec-title">Contingency / Misc</div>
+    <div class="brow">
+      <div><div class="brow-label">Reserve</div></div>
+      <div class="brow-right"><input class="binp" type="number" id="b-misc" value="50000" oninput="renderBudget()"/></div>
+    </div>
+  </div>
+
+  <!-- Per head summary -->
+  <div class="bsplit">
+    <div class="perhead">
+      <div class="sl">Total Budget</div>
+      <div class="sv" id="b-ph-total" style="color:#f87171"></div>
+    </div>
+    <div class="perhead">
+      <div class="sl">Cost / Head</div>
+      <div class="sv" id="b-ph-val"></div>
+    </div>
+  </div>
+
+  <!-- Buffer cards -->
+  <div class="bsplit">
+    <div class="buffer-card" id="b-card-now"></div>
+    <div class="buffer-card" id="b-card-proj"></div>
+  </div>
+
+  <div class="footer">Budget Planner &middot; Class of '97 &middot; 25 Jul 2026</div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   PAGE SWITCHER
+══════════════════════════════════════════ */
+function showPage(p){
+  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.ntb').forEach(function(b,i){
+    b.classList.toggle('active',(i===0&&p==='kitty')||(i===1&&p==='budget'));
+  });
+}
+
+/* ══════════════════════════════════════════
+   KITTY TRACKER
+══════════════════════════════════════════ */
+var E=[
+  {id:1, date:"2026-05-05",name:"Kathirvel",           roll:"97M18",type:"IN",amount:5000, note:"Contribution"},
+  {id:2, date:"2026-05-05",name:"Sriram Balaji",       roll:"97C26",type:"IN",amount:5000, note:"Contribution"},
+  {id:3, date:"2026-05-05",name:"Bala",                roll:"97M02",type:"IN",amount:5000, note:"Contribution"},
+  {id:4, date:"2026-05-05",name:"Santhana Raj",        roll:"97C21",type:"IN",amount:5000, note:"Contribution"},
+  {id:5, date:"2026-05-05",name:"Priya",               roll:"97E11",type:"IN",amount:5000, note:"Contribution"},
+  {id:6, date:"2026-05-05",name:"Muthulakshmi",        roll:"97E10",type:"IN",amount:5000, note:"Contribution"},
+  {id:7, date:"2026-05-06",name:"Joyson",              roll:"97E05",type:"IN",amount:5000, note:"Contribution (with Marshia, split)"},
+  {id:8, date:"2026-05-06",name:"Marshia",             roll:"97E34",type:"IN",amount:5000, note:"Contribution (with Joyson, split)"},
+  {id:9, date:"2026-05-07",name:"Leo",                 roll:"97C55",type:"IN",amount:5000, note:"Contribution"},
+  {id:10,date:"2026-05-08",name:"Udaya Sankar",        roll:"97C51",type:"IN",amount:5000, note:"Contribution"},
+  {id:11,date:"2026-05-08",name:"Priyadharshini",      roll:"97C18",type:"IN",amount:5000, note:"Contribution"},
+  {id:12,date:"2026-05-09",name:"Alice",               roll:"97C35",type:"IN",amount:10000,note:"Contribution"},
+  {id:13,date:"2026-05-10",name:"Thangeshwari",        roll:"97C33",type:"IN",amount:5000, note:"Contribution (paid by Sriram Balaji)"},
+  {id:14,date:"2026-05-10",name:"Ponsakthi",           roll:"97C59",type:"IN",amount:5000, note:"Contribution"},
+  {id:15,date:"2026-05-10",name:"Arumugam",            roll:"97M01",type:"IN",amount:5000, note:"Contribution"},
+  {id:16,date:"2026-05-10",name:"Anand",               roll:"97C36",type:"IN",amount:5000, note:"Contribution (paid by Subhadra)"},
+  {id:17,date:"2026-05-10",name:"Subhadra",            roll:"97C47",type:"IN",amount:5000, note:"Contribution"},
+  {id:18,date:"2026-05-11",name:"Prabhakar",           roll:"97C16",type:"IN",amount:5000, note:"Contribution"},
+  {id:19,date:"2026-05-11",name:"David",               roll:"97E03",type:"IN",amount:5000, note:"Contribution"},
+  {id:20,date:"2026-05-12",name:"Saravanan",           roll:"97C43",type:"IN",amount:5000, note:"Contribution (CSE)"},
+  {id:21,date:"2026-05-12",name:"Razeeka",             roll:"97E01",type:"IN",amount:5000, note:"Contribution"},
+  {id:22,date:"2026-05-12",name:"Suriya",              roll:"97M33",type:"IN",amount:5000, note:"Contribution"},
+  {id:23,date:"2026-05-12",name:"Jason",               roll:"97M17",type:"IN",amount:1000, note:"Contribution"},
+  {id:24,date:"2026-05-12",name:"Jeyaprakash",         roll:"97M65",type:"IN",amount:5000, note:"Contribution"},
+  {id:25,date:"2026-05-12",name:"Mary Ezhil",          roll:"97E35",type:"IN",amount:5000, note:"Contribution"},
+  {id:26,date:"2026-05-13",name:"Manimaran",           roll:"97M20",type:"IN",amount:5000, note:"Contribution"},
+  {id:27,date:"2026-05-16",name:"Geetha Murugesan",    roll:"97E04",type:"IN",amount:5000, note:"Contribution"},
+  {id:28,date:"2026-05-19",name:"Starvin",             roll:"97M32",type:"IN",amount:5000, note:"Contribution"},
+  {id:29,date:"2026-05-19",name:"Shini",               roll:"97C24",type:"IN",amount:5000, note:"Contribution"},
+  {id:30,date:"2026-05-22",name:"S Kumar",             roll:"97C10",type:"IN",amount:5000, note:"Contribution"},
+  {id:31,date:"2026-05-22",name:"Fathima",             roll:"97C41",type:"IN",amount:5000, note:"Contribution"},
+  {id:32,date:"2026-05-24",name:"Senthil Ganesh",      roll:"97E68",type:"IN",amount:5000, note:"Contribution"},
+  {id:33,date:"2026-05-24",name:"Shenbaga Punitha",    roll:"97E42",type:"IN",amount:5000, note:"Contribution"},
+  {id:34,date:"2026-05-26",name:"Muhilan",             roll:"97E37",type:"IN",amount:10000,note:"Contribution"},
+  {id:35,date:"2026-05-28",name:"Dinesh",              roll:"97E25",type:"IN",amount:5000, note:"Contribution"},
+  {id:36,date:"2026-05-30",name:"Senthil Murugan",     roll:"97C64",type:"IN",amount:5000, note:"Contribution"},
+  {id:37,date:"2026-05-31",name:"Siva Palaneeswari",   roll:"97C25",type:"IN",amount:5000, note:"Contribution"},
+  {id:38,date:"2026-05-31",name:"Pathirakali Muthu",   roll:"97C15",type:"IN",amount:5000, note:"Contribution"},
+  {id:39,date:"2026-06-02",name:"Krish Ratnam",        roll:"97C09",type:"IN",amount:5000, note:"Contribution"},
+  {id:40,date:"2026-06-02",name:"Balasubramanian",     roll:"97E22",type:"IN",amount:5000, note:"Contribution"},
+  {id:41,date:"2026-06-03",name:"Bharathy",            roll:"97E23",type:"IN",amount:8500, note:"Contribution"},
+  {id:42,date:"2026-06-03",name:"Josephine",           roll:"97C07",type:"IN",amount:5000, note:"Contribution"},
+  {id:43,date:"2026-06-10",name:"Vimal",               roll:"97E30",type:"IN",amount:2000, note:"Contribution"},
+  {id:44,date:"2026-06-11",name:"Harihara Subramanian",roll:"97E29",type:"IN",amount:5000, note:"Contribution"},
+  {id:45,date:"2026-06-11",name:"Joney Tilak",         roll:"97C06",type:"IN",amount:5000, note:"Contribution"},
+  {id:46,date:"2026-06-13",name:"VD Ashok",            roll:"97M35",type:"IN",amount:3000, note:"Contribution"}
+];
+
+var ktab="ledger";
+function fmtK(n){return "Rs."+Number(n).toLocaleString("en-IN")}
+function fdate(d){var m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],p=d.split("-");return parseInt(p[2])+" "+m[parseInt(p[1])-1]+" '26"}
+
+function setKittyTab(t){
+  ktab=t;
+  document.querySelectorAll('.itb').forEach(function(b,i){
+    b.classList.toggle('active',(i===0&&t==='ledger')||(i===1&&t==='summary'));
+  });
+  renderKitty();
+}
+
+function renderKitty(){
+  var tin=E.filter(function(e){return e.type==="IN"}).reduce(function(s,e){return s+e.amount},0);
+  var tout=E.filter(function(e){return e.type==="OUT"}).reduce(function(s,e){return s+e.amount},0);
+  var bal=tin-tout,C={};
+  E.filter(function(e){return e.type==="IN"}).forEach(function(e){
+    if(!C[e.name])C[e.name]={name:e.name,roll:e.roll,total:0};
+    C[e.name].total+=e.amount;
+  });
+  document.getElementById("k-stats").innerHTML=[
+    {l:"Total Collected",v:fmtK(tin),c:"#34d399"},
+    {l:"Total Spent",v:fmtK(tout),c:"#f87171"},
+    {l:"Balance",v:fmtK(bal),c:"#60a5fa"},
+    {l:"Contributors",v:Object.keys(C).length,c:"#c4b5fd"}
+  ].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
+
+  var view=document.getElementById("k-view");
+  if(ktab==="ledger"){
+    var sorted=E.slice().sort(function(a,b){return a.date.localeCompare(b.date)}),run=0;
+    var rows=sorted.map(function(e){
+      run+=e.type==="IN"?e.amount:-e.amount;
+      var rc=e.roll?'<span class="rb">'+e.roll+'</span>':'<span class="nn">-</span>';
+      var ac=e.type==="IN"?"#34d399":"#f87171",ap=e.type==="IN"?"+":"-";
+      var bc=e.type==="IN"?"bin":"bout",bt=e.type==="IN"?"IN":"OUT";
+      return '<tr><td class="dd">'+fdate(e.date)+'</td><td class="dn">'+e.name+'</td><td>'+rc+'</td><td><span class="badge '+bc+'">'+bt+'</span></td><td class="da" style="color:'+ac+'">'+ap+fmtK(e.amount)+'</td><td class="dr">'+fmtK(run)+'</td><td class="dn2">'+(e.note||"")+'</td></tr>';
+    }).join("");
+    view.innerHTML='<div class="tw"><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Type</th><th>Amount</th><th>Balance</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  } else {
+    var cards=Object.values(C).sort(function(a,b){return b.total-a.total}).map(function(c){
+      var rl=c.roll?'<div class="smr">'+c.roll+'</div>':'<div class="smnr">Roll not recorded</div>';
+      return '<div class="smc"><div><div class="smn">'+c.name+'</div>'+rl+'</div><div class="sma">'+fmtK(c.total)+'</div></div>';
+    }).join("");
+    view.innerHTML='<div class="summary">'+cards+'</div>';
+  }
+}
+renderKitty();
+
+/* ══════════════════════════════════════════
+   BUDGET PLANNER
+══════════════════════════════════════════ */
+function fmtB(n){return "Rs."+Number(Math.round(n)).toLocaleString("en-IN")}
+function gv(id){return parseFloat(document.getElementById(id).value)||0}
+
+function renderBudget(){
+  var kitty   = gv('b-kitty');
+  var heads   = gv('b-heads');
+  var contrib = gv('b-contrib');
+  var std     = gv('b-std');
+  var photo   = gv('b-photo');
+  var trans   = gv('b-transport');
+  var decor   = gv('b-decor');
+  var banner  = gv('b-banner');
+  var food    = gv('b-food');
+  var gifts   = gv('b-gifts');
+  var misc    = gv('b-misc');
+
+  var totalFixed = photo + trans + decor + banner;
+  var totalVar   = (food + gifts) * heads;
+  var totalBudget= totalFixed + totalVar + misc;
+  var perHead    = heads > 0 ? totalBudget / heads : 0;
+  var remaining  = Math.max(heads - contrib, 0);
+  var projKitty  = kitty + remaining * std;
+  var bufferNow  = kitty - totalBudget;
+  var bufferProj = projKitty - totalBudget;
+
+  document.getElementById('b-total-fixed').textContent = fmtB(totalFixed);
+  document.getElementById('b-food-sub').textContent    = fmtB(food * heads) + ' total (' + heads + ' heads)';
+  document.getElementById('b-gifts-sub').textContent   = fmtB(gifts * heads) + ' total (' + heads + ' heads)';
+  document.getElementById('b-total-var').textContent   = fmtB(totalVar);
+  document.getElementById('b-ph-total').textContent    = fmtB(totalBudget);
+  document.getElementById('b-ph-val').textContent      = fmtB(perHead);
+
+  // Buffer — current kitty
+  var cn = document.getElementById('b-card-now');
+  var nowPos = bufferNow >= 0;
+  cn.style.background = nowPos ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
+  cn.style.borderColor = nowPos ? '#10b981' : '#ef4444';
+  cn.innerHTML = '<div class="bc-label" style="color:'+(nowPos?'#10b981':'#ef4444')+'">Current Kitty Buffer</div>'
+    + '<div class="bc-val" style="color:'+(nowPos?'#34d399':'#f87171')+'">'+(nowPos?'+':'-')+fmtB(Math.abs(bufferNow))+'</div>'
+    + '<div class="bc-note" style="color:'+(nowPos?'#6ee7b7':'#fca5a5')+'">'
+    + (nowPos ? '✓ Current kitty covers full budget' : '⚠ Shortfall at current kitty')
+    + '</div>';
+
+  // Buffer — projected kitty
+  var cp = document.getElementById('b-card-proj');
+  var projPos = bufferProj >= 0;
+  cp.style.background = projPos ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
+  cp.style.borderColor = projPos ? '#10b981' : '#ef4444';
+  cp.innerHTML = '<div class="bc-label" style="color:'+(projPos?'#10b981':'#ef4444')+'">Projected Kitty Buffer</div>'
+    + '<div class="bc-val" style="color:'+(projPos?'#34d399':'#f87171')+'">'+(projPos?'+':'-')+fmtB(Math.abs(bufferProj))+'</div>'
+    + '<div class="bc-note" style="color:#64748b">Assumes '+remaining+' more contributors × '+fmtB(std)+' each (proj. kitty: '+fmtB(projKitty)+')</div>';
+}
+renderBudget();
+</script>
+</body>
+</html>
