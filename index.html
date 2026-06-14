@@ -94,6 +94,35 @@ td{padding:10px 12px;vertical-align:middle}
 .perhead .sl{font-size:10px;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:700}
 .perhead .sv{font-size:20px;font-weight:700;font-family:'DM Mono',monospace;color:#fcd34d}
 
+/* ── Tasks ── */
+.t-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+@media(min-width:480px){.t-summary{grid-template-columns:repeat(4,1fr)}}
+.task-card{background:#1a2740;border:1.5px solid #2e4060;border-radius:14px;padding:16px;margin-bottom:12px}
+.task-card.urgent{border-color:#ef4444}
+.task-card.warning{border-color:#f59e0b}
+.task-card.ok{border-color:#10b981}
+.task-card.done{border-color:#334155;opacity:.65}
+.task-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.task-title{font-size:15px;font-weight:700;color:#fff;line-height:1.35}
+.task-num{font-family:'DM Mono',monospace;font-size:11px;color:#4a6080;margin-bottom:4px}
+.sbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.s-todo{background:#1e3050;color:#93c5fd;border:1px solid #2e4060}
+.s-inprog{background:#1c3a1c;color:#86efac;border:1px solid #22c55e}
+.s-blocked{background:#3b1010;color:#fca5a5;border:1px solid #ef4444}
+.s-done{background:#1a2520;color:#6ee7b7;border:1px solid #10b981}
+.task-desc{font-size:12px;color:#94a3b8;line-height:1.55;margin-bottom:10px}
+.task-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.task-owners{display:flex;flex-wrap:wrap;gap:6px}
+.owner-chip{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600}
+.owner-assigned{background:#312e81;color:#c7d2fe;border:1px solid #4f46e5}
+.owner-needed{background:#3b1a00;color:#fcd34d;border:1px solid #f59e0b}
+.task-deadline{font-family:'DM Mono',monospace;font-size:11px;color:#fcd34d;margin-left:auto;white-space:nowrap}
+.task-deadline.overdue{color:#f87171}
+.task-deadline.soon{color:#fb923c}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.fbtn{padding:5px 14px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;background:#1a2740;color:#93c5fd}
+.fbtn.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+
 /* ── Footer ── */
 .footer{text-align:center;font-size:11px;color:#2e4060;margin-top:24px;font-family:'DM Mono',monospace}
 @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
@@ -107,6 +136,7 @@ td{padding:10px 12px;vertical-align:middle}
   <div class="topnav-tabs">
     <button class="ntb active" onclick="showPage('kitty')">💰 Kitty</button>
     <button class="ntb" onclick="showPage('budget')">📊 Budget</button>
+    <button class="ntb" onclick="showPage('tasks')">✅ Tasks</button>
   </div>
 </nav>
 
@@ -237,7 +267,7 @@ function showPage(p){
   document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
   document.getElementById('page-'+p).classList.add('active');
   document.querySelectorAll('.ntb').forEach(function(b,i){
-    b.classList.toggle('active',(i===0&&p==='kitty')||(i===1&&p==='budget'));
+    b.classList.toggle('active',(i===0&&p==='kitty')||(i===1&&p==='budget')||(i===2&&p==='tasks'));
   });
 }
 
@@ -397,6 +427,203 @@ function renderBudget(){
     + '<div class="bc-note" style="color:#64748b">Assumes '+remaining+' more contributors × '+fmtB(std)+' each (proj. kitty: '+fmtB(projKitty)+')</div>';
 }
 renderBudget();
+</script>
+
+<!-- ════════════════════════════════════
+     PAGE 3 — TASK TRACKER
+════════════════════════════════════ -->
+<div id="page-tasks" class="page">
+  <div class="hdr">
+    <div class="eyebrow">Class of 1997 &middot; 25 July 2026</div>
+    <h1>&#x2705; Task Tracker</h1>
+    <div class="sub">Organiser responsibilities &middot; Updated 14 Jun 2026</div>
+  </div>
+  <div class="t-summary" id="t-stats"></div>
+  <div class="filter-row" id="t-filters">
+    <button class="fbtn active" onclick="setTFilter('all')">All</button>
+    <button class="fbtn" onclick="setTFilter('todo')">To Do</button>
+    <button class="fbtn" onclick="setTFilter('inprog')">In Progress</button>
+    <button class="fbtn" onclick="setTFilter('blocked')">Needs Person</button>
+    <button class="fbtn" onclick="setTFilter('done')">Done</button>
+  </div>
+  <div id="t-view"></div>
+  <div class="footer">Task Tracker &middot; Class of '97 &middot; Reunion 25 Jul 2026</div>
+</div>
+<script>
+/* ══════════════════════════════════════════
+   TASK TRACKER
+══════════════════════════════════════════ */
+var TASKS = [
+  {
+    id:1, title:"Jute Bag",
+    desc:"Finalize size, design, features and price. Talk to vendor. Place order once headcount is confirmed.",
+    status:"inprog",
+    owners:[{name:"Muthulakshmi",needed:false},{name:"Bharathy",needed:false}],
+    deadline:"2026-07-05",
+    priority:"high",
+    notes:"Need owner to drive this end-to-end — vendor coordination, design approval, order placement."
+  },
+  {
+    id:2, title:"Finalize 3rd Gift",
+    desc:"Decide on the third gift item — confirm type, vendor, cost per head.",
+    status:"todo",
+    owners:[{name:"Bala",needed:false}],
+    deadline:"2026-07-01",
+    priority:"high",
+    notes:""
+  },
+  {
+    id:3, title:"Plan for Activities",
+    desc:"Plan games, icebreakers or group activities for the event.",
+    status:"blocked",
+    owners:[{name:"Bala",needed:false},{name:"Need 2 more",needed:true},{name:"Need 2 more",needed:true}],
+    deadline:"2026-07-10",
+    priority:"medium",
+    notes:"2 more volunteers needed to join Bala."
+  },
+  {
+    id:4, title:"Hall Arrangement, Decoration & Photo Booth",
+    desc:"Coordinate hall setup, decoration, welcome board and photo booth on event day.",
+    status:"blocked",
+    owners:[{name:"Need at least 1",needed:true}],
+    deadline:"2026-07-25",
+    priority:"high",
+    notes:"No owner assigned yet — critical task for event day."
+  },
+  {
+    id:5, title:"Photo / Video Coordination",
+    desc:"Coordinate with photographers/videographers. Manage coverage on event day.",
+    status:"inprog",
+    owners:[{name:"Kathir",needed:false}],
+    deadline:"2026-07-20",
+    priority:"high",
+    notes:""
+  },
+  {
+    id:6, title:"Food Responsibility",
+    desc:"Coordinate with caterer. Confirm menu, headcount and delivery/setup on event day.",
+    status:"inprog",
+    owners:[{name:"Bala",needed:false},{name:"Kathir",needed:false},{name:"Seethamani",needed:false}],
+    deadline:"2026-07-20",
+    priority:"high",
+    notes:""
+  },
+  {
+    id:7, title:"Souvenir / Memory Book",
+    desc:"Coordinate souvenir design and production. Girls-side co-ordinator needed for privacy-sensitive content collection.",
+    status:"blocked",
+    owners:[{name:"Bala",needed:false},{name:"Kathir",needed:false},{name:"Need 1 (girls side)",needed:true}],
+    deadline:"2026-07-10",
+    priority:"high",
+    notes:"1 more person needed from girls side for privacy-sensitive coordination."
+  },
+  {
+    id:8, title:"Local Transport",
+    desc:"Arrange local transport for attendees on event day (airport/station pickup, inter-venue movement).",
+    status:"blocked",
+    owners:[{name:"Need 2 people",needed:true},{name:"Need 2 people",needed:true}],
+    deadline:"2026-07-15",
+    priority:"medium",
+    notes:"No owners assigned yet."
+  },
+  {
+    id:9, title:"Coordination with College",
+    desc:"Liaise with college management for venue permissions, facilities and logistics.",
+    status:"inprog",
+    owners:[{name:"Starvin",needed:false},{name:"Need 1 more",needed:true}],
+    deadline:"2026-07-10",
+    priority:"high",
+    notes:"1 more person needed to support Starvin."
+  },
+  {
+    id:10, title:"Broadcasting & Group Communication",
+    desc:"Post updates, polls and voting in the WhatsApp group. Keep batch informed and engaged.",
+    status:"inprog",
+    owners:[{name:"SRB",needed:false},{name:"Marshia",needed:false}],
+    deadline:"2026-07-25",
+    priority:"medium",
+    notes:""
+  }
+];
+
+var tfilter = "all";
+
+function setTFilter(f){
+  tfilter = f;
+  document.querySelectorAll('.fbtn').forEach(function(b,i){
+    var map=["all","todo","inprog","blocked","done"];
+    b.classList.toggle('active', map[i]===f);
+  });
+  renderTasks();
+}
+
+function taskCardClass(t){
+  if(t.status==="done") return "done";
+  var hasNeeded = t.owners.some(function(o){return o.needed});
+  if(hasNeeded) return "urgent";
+  if(t.deadline){
+    var daysLeft = Math.ceil((new Date(t.deadline)-new Date())/(1000*60*60*24));
+    if(daysLeft<=7) return "urgent";
+    if(daysLeft<=14) return "warning";
+  }
+  return "ok";
+}
+
+function deadlineLabel(dl){
+  if(!dl) return "";
+  var d = new Date(dl);
+  var daysLeft = Math.ceil((d - new Date())/(1000*60*60*24));
+  var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var label = d.getDate()+" "+months[d.getMonth()]+" '26";
+  var cls = daysLeft<0?"overdue":daysLeft<=7?"soon":"";
+  var prefix = daysLeft<0?"Overdue · ":daysLeft===0?"Today · ":daysLeft<=7?""+daysLeft+"d left · ":"";
+  return '<span class="task-deadline '+cls+'">📅 '+prefix+label+'</span>';
+}
+
+function statusBadge(s){
+  var map={
+    todo:['s-todo','To Do'],
+    inprog:['s-inprog','In Progress'],
+    blocked:['s-blocked','Needs Person'],
+    done:['s-done','Done']
+  };
+  var m=map[s]||map.todo;
+  return '<span class="sbadge '+m[0]+'">'+m[1]+'</span>';
+}
+
+function renderTasks(){
+  var filtered = tfilter==="all" ? TASKS : TASKS.filter(function(t){return t.status===tfilter});
+
+  // Stats
+  var counts={todo:0,inprog:0,blocked:0,done:0};
+  TASKS.forEach(function(t){
+    if(counts[t.status]!==undefined) counts[t.status]++;
+  });
+  var needPerson = TASKS.filter(function(t){return t.owners.some(function(o){return o.needed})}).length;
+  document.getElementById('t-stats').innerHTML=[
+    {l:"Total Tasks",v:TASKS.length,c:"#c4b5fd"},
+    {l:"In Progress",v:counts.inprog,c:"#34d399"},
+    {l:"Needs Person",v:needPerson,c:"#f87171"},
+    {l:"Done",v:counts.done,c:"#60a5fa"}
+  ].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
+
+  // Cards
+  var html = filtered.map(function(t){
+    var cc = taskCardClass(t);
+    var owners = t.owners.map(function(o){
+      return '<span class="owner-chip '+(o.needed?"owner-needed":"owner-assigned")+'">'+o.name+'</span>';
+    }).join("");
+    return '<div class="task-card '+cc+'">'
+      +'<div class="task-num">#'+t.id+'</div>'
+      +'<div class="task-top"><div class="task-title">'+t.title+'</div>'+statusBadge(t.status)+'</div>'
+      +'<div class="task-desc">'+t.desc+(t.notes?' <span style="color:#f59e0b;font-style:italic">⚠ '+t.notes+'</span>':'')+'</div>'
+      +'<div class="task-meta"><div class="task-owners">'+owners+'</div>'+deadlineLabel(t.deadline)+'</div>'
+      +'</div>';
+  }).join("");
+
+  document.getElementById('t-view').innerHTML = html || '<div style="color:#4a6080;text-align:center;padding:40px">No tasks in this filter.</div>';
+}
+renderTasks();
 </script>
 </body>
 </html>
