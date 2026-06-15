@@ -8,39 +8,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:#0f1923;color:#fff;min-height:100vh}
-
-/* ── Top Nav ── */
-.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#0a1220;border-bottom:1.5px solid #1e3050;position:sticky;top:0;z-index:100}
-.topnav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;color:#7dd3fc;text-transform:uppercase}
-.topnav-tabs{display:flex;gap:6px}
-.ntb{padding:7px 18px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-weight:700;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#0a1220;border-bottom:1.5px solid #1e3050;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.topnav-brand{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:#7dd3fc;text-transform:uppercase}
+.topnav-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.ntb{padding:6px 14px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-weight:700;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
 .ntb.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 .ntb:not(.active){background:#1a2740;color:#93c5fd}
-
-/* ── Pages ── */
-.page{display:none;padding:24px 16px 48px}
+.page{display:none;padding:20px 14px 48px}
 .page.active{display:block}
-
-/* ── Shared header ── */
-.hdr{text-align:center;margin-bottom:24px}
+.hdr{text-align:center;margin-bottom:20px}
 .eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:#7dd3fc;text-transform:uppercase;margin-bottom:6px}
-h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;margin-bottom:4px}
+h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:4px}
 .sub{font-size:11px;color:#7dd3fc;font-family:'DM Mono',monospace}
-
-/* ── Stats grid ── */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
 @media(min-width:480px){.stats{grid-template-columns:repeat(4,1fr)}}
 .sc{border-radius:14px;padding:14px 12px;text-align:center;background:#1a2740;border:1.5px solid #2e4060}
 .sl{font-size:10px;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:700}
 .sv{font-size:20px;font-weight:700;font-family:'DM Mono',monospace}
-
-/* ── Inner tabs (kitty) ── */
 .itabs{display:flex;gap:8px;margin-bottom:16px}
 .itb{padding:7px 20px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-weight:700;font-size:13px;font-family:'DM Sans',sans-serif}
 .itb.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 .itb:not(.active){background:#1a2740;color:#93c5fd}
-
-/* ── Table ── */
 .tw{overflow-x:auto;border-radius:12px;border:1.5px solid #2e4060;background:#131f30}
 table{width:100%;border-collapse:collapse;font-size:13px}
 thead tr{background:#1a2e47}
@@ -59,16 +47,12 @@ td{padding:10px 12px;vertical-align:middle}
 .da{font-weight:700;font-family:'DM Mono',monospace;white-space:nowrap;font-size:13px}
 .dr{font-weight:700;color:#60a5fa;font-family:'DM Mono',monospace;white-space:nowrap;font-size:13px}
 .dn2{color:#94a3b8;font-size:12px}
-
-/* ── Contributors ── */
 .summary{display:flex;flex-direction:column;gap:10px}
 .smc{display:flex;align-items:center;justify-content:space-between;background:#1a2740;border-radius:12px;padding:14px 16px;border:1.5px solid #2e4060}
 .smn{font-weight:700;color:#fff;margin-bottom:3px;font-size:15px}
 .smr{font-family:'DM Mono',monospace;font-size:11px;color:#c4b5fd;font-weight:600}
 .smnr{font-size:11px;color:#4a6080}
 .sma{font-weight:700;font-size:18px;color:#34d399;font-family:'DM Mono',monospace}
-
-/* ── Budget planner ── */
 .bsec{background:#1a2740;border:1.5px solid #2e4060;border-radius:14px;padding:18px;margin-bottom:16px}
 .bsec-title{font-size:10px;letter-spacing:2px;color:#7dd3fc;font-weight:700;text-transform:uppercase;margin-bottom:14px;font-family:'DM Mono',monospace}
 .brow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1e3050}
@@ -77,14 +61,10 @@ td{padding:10px 12px;vertical-align:middle}
 .brow-sub{font-size:11px;color:#64748b;margin-top:2px}
 .brow-right{display:flex;align-items:center;gap:10px}
 .binp{background:#0f1923;border:1.5px solid #2e4060;border-radius:8px;color:#f1f5f9;padding:6px 10px;font-size:13px;font-family:'DM Mono',monospace;outline:none;width:110px;text-align:right}
-.bval{font-family:'DM Mono',monospace;font-size:14px;color:#34d399;font-weight:700;min-width:100px;text-align:right}
-.bval.out{color:#f87171}
-.bval.blue{color:#60a5fa}
-.bval.gold{color:#fcd34d}
 .btotal-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0 0;margin-top:8px;border-top:2px solid #2e4060}
 .btotal-label{font-size:12px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:1px;font-family:'DM Mono',monospace}
 .btotal-val{font-family:'DM Mono',monospace;font-size:16px;font-weight:700}
-.buffer-card{border-radius:14px;padding:16px 18px;margin-bottom:16px;border:1.5px solid}
+.buffer-card{border-radius:14px;padding:16px 18px;margin-bottom:0;border:1.5px solid}
 .bc-label{font-size:10px;letter-spacing:2px;font-weight:700;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:6px}
 .bc-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:700}
 .bc-note{font-size:11px;margin-top:6px;opacity:.7}
@@ -94,43 +74,54 @@ td{padding:10px 12px;vertical-align:middle}
 .perhead .sl{font-size:10px;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:700}
 .perhead .sv{font-size:20px;font-weight:700;font-family:'DM Mono',monospace;color:#fcd34d}
 
-/* ── Tasks ── */
-.t-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
-@media(min-width:480px){.t-summary{grid-template-columns:repeat(4,1fr)}}
-.task-card{background:#1a2740;border:1.5px solid #2e4060;border-radius:14px;padding:16px;margin-bottom:12px}
-.task-card.urgent{border-color:#ef4444}
-.task-card.warning{border-color:#f59e0b}
-.task-card.ok{border-color:#10b981}
-.task-card.done{border-color:#334155;opacity:.65}
-.task-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
-.task-title{font-size:15px;font-weight:700;color:#fff;line-height:1.35}
-.task-num{font-family:'DM Mono',monospace;font-size:11px;color:#4a6080;margin-bottom:4px}
-.sbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
-.s-todo{background:#1e3050;color:#93c5fd;border:1px solid #2e4060}
-.s-inprog{background:#1c3a1c;color:#86efac;border:1px solid #22c55e}
-.s-blocked{background:#3b1010;color:#fca5a5;border:1px solid #ef4444}
-.s-done{background:#1a2520;color:#6ee7b7;border:1px solid #10b981}
-.task-desc{font-size:12px;color:#94a3b8;line-height:1.55;margin-bottom:10px}
-.task-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.task-owners{display:flex;flex-wrap:wrap;gap:6px}
-.owner-chip{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600}
-.owner-assigned{background:#312e81;color:#c7d2fe;border:1px solid #4f46e5}
-.owner-needed{background:#3b1a00;color:#fcd34d;border:1px solid #f59e0b}
-.task-deadline{font-family:'DM Mono',monospace;font-size:11px;color:#fcd34d;margin-left:auto;white-space:nowrap}
-.task-deadline.overdue{color:#f87171}
-.task-deadline.soon{color:#fb923c}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.fbtn{padding:5px 14px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;background:#1a2740;color:#93c5fd}
+/* ── TASKS ── */
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.fbtn{padding:5px 12px;border-radius:20px;border:1.5px solid #2e4060;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;background:#1a2740;color:#93c5fd}
 .fbtn.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 
-/* ── Footer ── */
+/* Bucket */
+.bucket{border-radius:16px;border:1.5px solid #2e4060;margin-bottom:16px;overflow:hidden}
+.bucket-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;background:#162033;user-select:none}
+.bucket-header:hover{background:#1a2740}
+.bucket-left{display:flex;align-items:center;gap:10px}
+.bucket-icon{font-size:18px;line-height:1}
+.bucket-title{font-size:15px;font-weight:700;color:#fff}
+.bucket-right{display:flex;align-items:center;gap:8px}
+.bucket-prog{font-family:'DM Mono',monospace;font-size:11px;color:#64748b}
+.bucket-toggle{font-size:14px;color:#64748b;transition:transform .2s}
+.bucket.open .bucket-toggle{transform:rotate(180deg)}
+.bucket-body{display:none;padding:0 0 8px}
+.bucket.open .bucket-body{display:block}
+
+/* Subtask */
+.stask{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;border-top:1px solid #1e3050}
+.stask:hover{background:#162033}
+.stask-left{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.stask-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.stask-title{font-size:13px;font-weight:600;color:#e2e8f0}
+.stask-title.done-title{color:#475569;text-decoration:line-through}
+.stask-owners{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.stask-note{font-size:11px;color:#64748b;margin-top:3px;line-height:1.45}
+.stask-note.warn{color:#f59e0b}
+.owner-chip{font-size:10px;padding:2px 7px;border-radius:12px;font-weight:600;white-space:nowrap}
+.oc-assigned{background:#1e2d6b;color:#a5b4fc;border:1px solid #3730a3}
+.oc-needed{background:#3b1a00;color:#fcd34d;border:1px solid #d97706}
+.sbadge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700;white-space:nowrap}
+.s-todo{background:#1e3050;color:#93c5fd;border:1px solid #334155}
+.s-inprog{background:#14291a;color:#86efac;border:1px solid #16a34a}
+.s-blocked{background:#3b1010;color:#fca5a5;border:1px solid #dc2626}
+.s-done{background:#132218;color:#6ee7b7;border:1px solid #059669}
+.stask-dl{font-family:'DM Mono',monospace;font-size:10px;white-space:nowrap;color:#fcd34d}
+.stask-dl.overdue{color:#f87171}
+.stask-dl.soon{color:#fb923c}
+.bucket-alert{font-size:10px;padding:2px 8px;border-radius:12px;font-weight:700;background:#3b1a00;color:#fcd34d;border:1px solid #d97706;white-space:nowrap}
+
 .footer{text-align:center;font-size:11px;color:#2e4060;margin-top:24px;font-family:'DM Mono',monospace}
 @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body>
 
-<!-- Top Nav -->
 <nav class="topnav">
   <div class="topnav-brand">&#127891; Class of '97 · Dr. SACOE</div>
   <div class="topnav-tabs">
@@ -140,129 +131,87 @@ td{padding:10px 12px;vertical-align:middle}
   </div>
 </nav>
 
-<!-- ════════════════════════════════════
-     PAGE 1 — KITTY TRACKER
-════════════════════════════════════ -->
+<!-- PAGE 1 — KITTY -->
 <div id="page-kitty" class="page active">
   <div class="hdr">
-    <div class="eyebrow">Class of 1997 &middot; Reunion Fund</div>
-    <h1>&#x1F4B0; Kitty Tracker</h1>
-    <div class="sub">Canara SB &middot; A/c &middot;&middot;&middot;3692 &middot; As of 14 Jun 2026</div>
+    <div class="eyebrow">Class of 1997 · Reunion Fund</div>
+    <h1>💰 Kitty Tracker</h1>
+    <div class="sub">Canara SB · A/c ···3692 · As of 14 Jun 2026</div>
   </div>
   <div class="stats" id="k-stats"></div>
   <div class="itabs">
-    <button class="itb active" onclick="setKittyTab('ledger')">&#x1F4CB; Ledger</button>
-    <button class="itb" onclick="setKittyTab('summary')">&#x1F465; Contributors</button>
+    <button class="itb active" onclick="setKittyTab('ledger')">📋 Ledger</button>
+    <button class="itb" onclick="setKittyTab('summary')">👥 Contributors</button>
   </div>
   <div id="k-view"></div>
-  <div class="footer">Canara SB &middot;&middot;&middot;3692 &middot; Tracked from May 2026</div>
+  <div class="footer">Canara SB ···3692 · Tracked from May 2026</div>
 </div>
 
-<!-- ════════════════════════════════════
-     PAGE 2 — BUDGET PLANNER
-════════════════════════════════════ -->
+<!-- PAGE 2 — BUDGET -->
 <div id="page-budget" class="page">
   <div class="hdr">
-    <div class="eyebrow">Class of 1997 &middot; 25 July 2026</div>
-    <h1>&#x1F4CA; Budget Planner</h1>
-    <div class="sub">Dr. Sivanthi Aditanar College of Engineering &middot; Tiruchendur</div>
+    <div class="eyebrow">Class of 1997 · 25 July 2026</div>
+    <h1>📊 Budget Planner</h1>
+    <div class="sub">Dr. Sivanthi Aditanar College of Engineering · Tiruchendur</div>
   </div>
-
-  <!-- Summary cards — TOP -->
   <div class="bsplit">
-    <div class="perhead">
-      <div class="sl">Total Budget</div>
-      <div class="sv" id="b-ph-total" style="color:#f87171"></div>
-    </div>
-    <div class="perhead">
-      <div class="sl">Cost / Head</div>
-      <div class="sv" id="b-ph-val"></div>
-    </div>
+    <div class="perhead"><div class="sl">Total Budget</div><div class="sv" id="b-ph-total" style="color:#f87171"></div></div>
+    <div class="perhead"><div class="sl">Cost / Head</div><div class="sv" id="b-ph-val"></div></div>
   </div>
   <div class="bsplit">
     <div class="buffer-card" id="b-card-now"></div>
     <div class="buffer-card" id="b-card-proj"></div>
   </div>
-
-  <!-- Key inputs -->
+  <div style="margin-top:16px"></div>
   <div class="bsec">
     <div class="bsec-title">Key Inputs</div>
-    <div class="brow">
-      <div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-kitty" value="234500" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-heads" value="60" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-contrib" value="46" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-std" value="5000" oninput="renderBudget()"/></div>
-    </div>
+    <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="234500" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="60" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div><div class="brow-right"><input class="binp" type="number" id="b-contrib" value="46" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="5000" oninput="renderBudget()"/></div></div>
   </div>
-
-  <!-- Fixed expenses -->
   <div class="bsec">
     <div class="bsec-title">Fixed Expenses</div>
-    <div class="brow">
-      <div><div class="brow-label">Photography</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-photo" value="15000" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Local Transport</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-transport" value="5000" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Decoration</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-decor" value="5000" oninput="renderBudget()"/></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Banner / Photo Booth</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-banner" value="5000" oninput="renderBudget()"/></div>
-    </div>
-    <div class="btotal-row">
-      <div class="btotal-label">Total Fixed</div>
-      <div class="btotal-val" id="b-total-fixed" style="color:#f87171"></div>
-    </div>
+    <div class="brow"><div><div class="brow-label">Photography</div></div><div class="brow-right"><input class="binp" type="number" id="b-photo" value="15000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Local Transport</div></div><div class="brow-right"><input class="binp" type="number" id="b-transport" value="5000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Decoration</div></div><div class="brow-right"><input class="binp" type="number" id="b-decor" value="5000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Banner / Photo Booth</div></div><div class="brow-right"><input class="binp" type="number" id="b-banner" value="5000" oninput="renderBudget()"/></div></div>
+    <div class="btotal-row"><div class="btotal-label">Total Fixed</div><div class="btotal-val" id="b-total-fixed" style="color:#f87171"></div></div>
   </div>
-
-  <!-- Variable expenses -->
   <div class="bsec">
     <div class="bsec-title">Variable Expenses <span style="color:#4a6080;font-size:10px;font-weight:400">per head</span></div>
-    <div class="brow">
-      <div><div class="brow-label">Food &amp; Refreshments</div><div class="brow-sub" id="b-food-sub"></div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-food" value="1000" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div>
-    </div>
-    <div class="brow">
-      <div><div class="brow-label">Gifts / Mementos</div><div class="brow-sub" id="b-gifts-sub"></div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-gifts" value="1200" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div>
-    </div>
-    <div class="btotal-row">
-      <div class="btotal-label">Total Variable</div>
-      <div class="btotal-val" id="b-total-var" style="color:#f87171"></div>
-    </div>
+    <div class="brow"><div><div class="brow-label">Food &amp; Refreshments</div><div class="brow-sub" id="b-food-sub"></div></div><div class="brow-right"><input class="binp" type="number" id="b-food" value="1000" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div></div>
+    <div class="brow"><div><div class="brow-label">Gifts / Mementos</div><div class="brow-sub" id="b-gifts-sub"></div></div><div class="brow-right"><input class="binp" type="number" id="b-gifts" value="1200" oninput="renderBudget()"/> <span style="color:#64748b;font-size:11px">/head</span></div></div>
+    <div class="btotal-row"><div class="btotal-label">Total Variable</div><div class="btotal-val" id="b-total-var" style="color:#f87171"></div></div>
   </div>
-
-  <!-- Contingency -->
   <div class="bsec">
     <div class="bsec-title">Contingency / Misc</div>
-    <div class="brow">
-      <div><div class="brow-label">Reserve</div></div>
-      <div class="brow-right"><input class="binp" type="number" id="b-misc" value="50000" oninput="renderBudget()"/></div>
-    </div>
+    <div class="brow"><div><div class="brow-label">Reserve</div></div><div class="brow-right"><input class="binp" type="number" id="b-misc" value="50000" oninput="renderBudget()"/></div></div>
   </div>
+  <div class="footer">Budget Planner · Class of '97 · 25 Jul 2026</div>
+</div>
 
-  <div class="footer">Budget Planner &middot; Class of '97 &middot; 25 Jul 2026</div>
+<!-- PAGE 3 — TASKS -->
+<div id="page-tasks" class="page">
+  <div class="hdr">
+    <div class="eyebrow">Class of 1997 · 25 July 2026</div>
+    <h1>✅ Task Tracker</h1>
+    <div class="sub">Organiser responsibilities · Updated 15 Jun 2026</div>
+  </div>
+  <div class="stats" id="t-stats"></div>
+  <div class="filter-row">
+    <button class="fbtn active" onclick="setTF('all',this)">All</button>
+    <button class="fbtn" onclick="setTF('inprog',this)">In Progress</button>
+    <button class="fbtn" onclick="setTF('todo',this)">To Do</button>
+    <button class="fbtn" onclick="setTF('blocked',this)">Needs Person</button>
+    <button class="fbtn" onclick="setTF('done',this)">Done</button>
+  </div>
+  <div id="t-view"></div>
+  <div class="footer">Task Tracker · Class of '97 · Reunion 25 Jul 2026</div>
 </div>
 
 <script>
-/* ══════════════════════════════════════════
-   PAGE SWITCHER
-══════════════════════════════════════════ */
+/* ── PAGE SWITCHER ── */
 function showPage(p){
   document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
   document.getElementById('page-'+p).classList.add('active');
@@ -271,357 +220,370 @@ function showPage(p){
   });
 }
 
-/* ══════════════════════════════════════════
-   KITTY TRACKER
-══════════════════════════════════════════ */
+/* ── KITTY ── */
 var E=[
-  {id:1, date:"2026-05-05",name:"Kathirvel",           roll:"97M18",type:"IN",amount:5000, note:"Contribution"},
-  {id:2, date:"2026-05-05",name:"Sriram Balaji",       roll:"97C26",type:"IN",amount:5000, note:"Contribution"},
-  {id:3, date:"2026-05-05",name:"Bala",                roll:"97M02",type:"IN",amount:5000, note:"Contribution"},
-  {id:4, date:"2026-05-05",name:"Santhana Raj",        roll:"97C21",type:"IN",amount:5000, note:"Contribution"},
-  {id:5, date:"2026-05-05",name:"Priya",               roll:"97E11",type:"IN",amount:5000, note:"Contribution"},
-  {id:6, date:"2026-05-05",name:"Muthulakshmi",        roll:"97E10",type:"IN",amount:5000, note:"Contribution"},
-  {id:7, date:"2026-05-06",name:"Joyson",              roll:"97E05",type:"IN",amount:5000, note:"Contribution (with Marshia, split)"},
-  {id:8, date:"2026-05-06",name:"Marshia",             roll:"97E34",type:"IN",amount:5000, note:"Contribution (with Joyson, split)"},
-  {id:9, date:"2026-05-07",name:"Leo",                 roll:"97C55",type:"IN",amount:5000, note:"Contribution"},
-  {id:10,date:"2026-05-08",name:"Udaya Sankar",        roll:"97C51",type:"IN",amount:5000, note:"Contribution"},
-  {id:11,date:"2026-05-08",name:"Priyadharshini",      roll:"97C18",type:"IN",amount:5000, note:"Contribution"},
-  {id:12,date:"2026-05-09",name:"Alice",               roll:"97C35",type:"IN",amount:10000,note:"Contribution"},
-  {id:13,date:"2026-05-10",name:"Thangeshwari",        roll:"97C33",type:"IN",amount:5000, note:"Contribution (paid by Sriram Balaji)"},
-  {id:14,date:"2026-05-10",name:"Ponsakthi",           roll:"97C59",type:"IN",amount:5000, note:"Contribution"},
-  {id:15,date:"2026-05-10",name:"Arumugam",            roll:"97M01",type:"IN",amount:5000, note:"Contribution"},
-  {id:16,date:"2026-05-10",name:"Anand",               roll:"97C36",type:"IN",amount:5000, note:"Contribution (paid by Subhadra)"},
-  {id:17,date:"2026-05-10",name:"Subhadra",            roll:"97C47",type:"IN",amount:5000, note:"Contribution"},
-  {id:18,date:"2026-05-11",name:"Prabhakar",           roll:"97C16",type:"IN",amount:5000, note:"Contribution"},
-  {id:19,date:"2026-05-11",name:"David",               roll:"97E03",type:"IN",amount:5000, note:"Contribution"},
-  {id:20,date:"2026-05-12",name:"Saravanan",           roll:"97C43",type:"IN",amount:5000, note:"Contribution (CSE)"},
-  {id:21,date:"2026-05-12",name:"Razeeka",             roll:"97E01",type:"IN",amount:5000, note:"Contribution"},
-  {id:22,date:"2026-05-12",name:"Suriya",              roll:"97M33",type:"IN",amount:5000, note:"Contribution"},
-  {id:23,date:"2026-05-12",name:"Jason",               roll:"97M17",type:"IN",amount:1000, note:"Contribution"},
-  {id:24,date:"2026-05-12",name:"Jeyaprakash",         roll:"97M65",type:"IN",amount:5000, note:"Contribution"},
-  {id:25,date:"2026-05-12",name:"Mary Ezhil",          roll:"97E35",type:"IN",amount:5000, note:"Contribution"},
-  {id:26,date:"2026-05-13",name:"Manimaran",           roll:"97M20",type:"IN",amount:5000, note:"Contribution"},
-  {id:27,date:"2026-05-16",name:"Geetha Murugesan",    roll:"97E04",type:"IN",amount:5000, note:"Contribution"},
-  {id:28,date:"2026-05-19",name:"Starvin",             roll:"97M32",type:"IN",amount:5000, note:"Contribution"},
-  {id:29,date:"2026-05-19",name:"Shini",               roll:"97C24",type:"IN",amount:5000, note:"Contribution"},
-  {id:30,date:"2026-05-22",name:"S Kumar",             roll:"97C10",type:"IN",amount:5000, note:"Contribution"},
-  {id:31,date:"2026-05-22",name:"Fathima",             roll:"97C41",type:"IN",amount:5000, note:"Contribution"},
-  {id:32,date:"2026-05-24",name:"Senthil Ganesh",      roll:"97E68",type:"IN",amount:5000, note:"Contribution"},
-  {id:33,date:"2026-05-24",name:"Shenbaga Punitha",    roll:"97E42",type:"IN",amount:5000, note:"Contribution"},
-  {id:34,date:"2026-05-26",name:"Muhilan",             roll:"97E37",type:"IN",amount:10000,note:"Contribution"},
-  {id:35,date:"2026-05-28",name:"Dinesh",              roll:"97E25",type:"IN",amount:5000, note:"Contribution"},
-  {id:36,date:"2026-05-30",name:"Senthil Murugan",     roll:"97C64",type:"IN",amount:5000, note:"Contribution"},
-  {id:37,date:"2026-05-31",name:"Siva Palaneeswari",   roll:"97C25",type:"IN",amount:5000, note:"Contribution"},
-  {id:38,date:"2026-05-31",name:"Pathirakali Muthu",   roll:"97C15",type:"IN",amount:5000, note:"Contribution"},
-  {id:39,date:"2026-06-02",name:"Krish Ratnam",        roll:"97C09",type:"IN",amount:5000, note:"Contribution"},
-  {id:40,date:"2026-06-02",name:"Balasubramanian",     roll:"97E22",type:"IN",amount:5000, note:"Contribution"},
-  {id:41,date:"2026-06-03",name:"Bharathy",            roll:"97E23",type:"IN",amount:8500, note:"Contribution"},
-  {id:42,date:"2026-06-03",name:"Josephine",           roll:"97C07",type:"IN",amount:5000, note:"Contribution"},
-  {id:43,date:"2026-06-10",name:"Vimal",               roll:"97E30",type:"IN",amount:2000, note:"Contribution"},
-  {id:44,date:"2026-06-11",name:"Harihara Subramanian",roll:"97E29",type:"IN",amount:5000, note:"Contribution"},
-  {id:45,date:"2026-06-11",name:"Joney Tilak",         roll:"97C06",type:"IN",amount:5000, note:"Contribution"},
-  {id:46,date:"2026-06-13",name:"VD Ashok",            roll:"97M35",type:"IN",amount:3000, note:"Contribution"}
+  {id:1,date:"2026-05-05",name:"Kathirvel",roll:"97M18",type:"IN",amount:5000,note:"Contribution"},
+  {id:2,date:"2026-05-05",name:"Sriram Balaji",roll:"97C26",type:"IN",amount:5000,note:"Contribution"},
+  {id:3,date:"2026-05-05",name:"Bala",roll:"97M02",type:"IN",amount:5000,note:"Contribution"},
+  {id:4,date:"2026-05-05",name:"Santhana Raj",roll:"97C21",type:"IN",amount:5000,note:"Contribution"},
+  {id:5,date:"2026-05-05",name:"Priya",roll:"97E11",type:"IN",amount:5000,note:"Contribution"},
+  {id:6,date:"2026-05-05",name:"Muthulakshmi",roll:"97E10",type:"IN",amount:5000,note:"Contribution"},
+  {id:7,date:"2026-05-06",name:"Joyson",roll:"97E05",type:"IN",amount:5000,note:"Contribution (with Marshia, split)"},
+  {id:8,date:"2026-05-06",name:"Marshia",roll:"97E34",type:"IN",amount:5000,note:"Contribution (with Joyson, split)"},
+  {id:9,date:"2026-05-07",name:"Leo",roll:"97C55",type:"IN",amount:5000,note:"Contribution"},
+  {id:10,date:"2026-05-08",name:"Udaya Sankar",roll:"97C51",type:"IN",amount:5000,note:"Contribution"},
+  {id:11,date:"2026-05-08",name:"Priyadharshini",roll:"97C18",type:"IN",amount:5000,note:"Contribution"},
+  {id:12,date:"2026-05-09",name:"Alice",roll:"97C35",type:"IN",amount:10000,note:"Contribution"},
+  {id:13,date:"2026-05-10",name:"Thangeshwari",roll:"97C33",type:"IN",amount:5000,note:"Contribution (paid by Sriram Balaji)"},
+  {id:14,date:"2026-05-10",name:"Ponsakthi",roll:"97C59",type:"IN",amount:5000,note:"Contribution"},
+  {id:15,date:"2026-05-10",name:"Arumugam",roll:"97M01",type:"IN",amount:5000,note:"Contribution"},
+  {id:16,date:"2026-05-10",name:"Anand",roll:"97C36",type:"IN",amount:5000,note:"Contribution (paid by Subhadra)"},
+  {id:17,date:"2026-05-10",name:"Subhadra",roll:"97C47",type:"IN",amount:5000,note:"Contribution"},
+  {id:18,date:"2026-05-11",name:"Prabhakar",roll:"97C16",type:"IN",amount:5000,note:"Contribution"},
+  {id:19,date:"2026-05-11",name:"David",roll:"97E03",type:"IN",amount:5000,note:"Contribution"},
+  {id:20,date:"2026-05-12",name:"Saravanan",roll:"97C43",type:"IN",amount:5000,note:"Contribution (CSE)"},
+  {id:21,date:"2026-05-12",name:"Razeeka",roll:"97E01",type:"IN",amount:5000,note:"Contribution"},
+  {id:22,date:"2026-05-12",name:"Suriya",roll:"97M33",type:"IN",amount:5000,note:"Contribution"},
+  {id:23,date:"2026-05-12",name:"Jason",roll:"97M17",type:"IN",amount:1000,note:"Contribution"},
+  {id:24,date:"2026-05-12",name:"Jeyaprakash",roll:"97M65",type:"IN",amount:5000,note:"Contribution"},
+  {id:25,date:"2026-05-12",name:"Mary Ezhil",roll:"97E35",type:"IN",amount:5000,note:"Contribution"},
+  {id:26,date:"2026-05-13",name:"Manimaran",roll:"97M20",type:"IN",amount:5000,note:"Contribution"},
+  {id:27,date:"2026-05-16",name:"Geetha Murugesan",roll:"97E04",type:"IN",amount:5000,note:"Contribution"},
+  {id:28,date:"2026-05-19",name:"Starvin",roll:"97M32",type:"IN",amount:5000,note:"Contribution"},
+  {id:29,date:"2026-05-19",name:"Shini",roll:"97C24",type:"IN",amount:5000,note:"Contribution"},
+  {id:30,date:"2026-05-22",name:"S Kumar",roll:"97C10",type:"IN",amount:5000,note:"Contribution"},
+  {id:31,date:"2026-05-22",name:"Fathima",roll:"97C41",type:"IN",amount:5000,note:"Contribution"},
+  {id:32,date:"2026-05-24",name:"Senthil Ganesh",roll:"97E68",type:"IN",amount:5000,note:"Contribution"},
+  {id:33,date:"2026-05-24",name:"Shenbaga Punitha",roll:"97E42",type:"IN",amount:5000,note:"Contribution"},
+  {id:34,date:"2026-05-26",name:"Muhilan",roll:"97E37",type:"IN",amount:10000,note:"Contribution"},
+  {id:35,date:"2026-05-28",name:"Dinesh",roll:"97E25",type:"IN",amount:5000,note:"Contribution"},
+  {id:36,date:"2026-05-30",name:"Senthil Murugan",roll:"97C64",type:"IN",amount:5000,note:"Contribution"},
+  {id:37,date:"2026-05-31",name:"Siva Palaneeswari",roll:"97C25",type:"IN",amount:5000,note:"Contribution"},
+  {id:38,date:"2026-05-31",name:"Pathirakali Muthu",roll:"97C15",type:"IN",amount:5000,note:"Contribution"},
+  {id:39,date:"2026-06-02",name:"Krish Ratnam",roll:"97C09",type:"IN",amount:5000,note:"Contribution"},
+  {id:40,date:"2026-06-02",name:"Balasubramanian",roll:"97E22",type:"IN",amount:5000,note:"Contribution"},
+  {id:41,date:"2026-06-03",name:"Bharathy",roll:"97E23",type:"IN",amount:8500,note:"Contribution"},
+  {id:42,date:"2026-06-03",name:"Josephine",roll:"97C07",type:"IN",amount:5000,note:"Contribution"},
+  {id:43,date:"2026-06-10",name:"Vimal",roll:"97E30",type:"IN",amount:2000,note:"Contribution"},
+  {id:44,date:"2026-06-11",name:"Harihara Subramanian",roll:"97E29",type:"IN",amount:5000,note:"Contribution"},
+  {id:45,date:"2026-06-11",name:"Joney Tilak",roll:"97C06",type:"IN",amount:5000,note:"Contribution"},
+  {id:46,date:"2026-06-13",name:"VD Ashok",roll:"97M35",type:"IN",amount:3000,note:"Contribution"}
 ];
-
 var ktab="ledger";
 function fmtK(n){return "Rs."+Number(n).toLocaleString("en-IN")}
 function fdate(d){var m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],p=d.split("-");return parseInt(p[2])+" "+m[parseInt(p[1])-1]+" '26"}
-
-function setKittyTab(t){
-  ktab=t;
-  document.querySelectorAll('.itb').forEach(function(b,i){
-    b.classList.toggle('active',(i===0&&t==='ledger')||(i===1&&t==='summary'));
-  });
-  renderKitty();
-}
-
+function setKittyTab(t){ktab=t;document.querySelectorAll('.itb').forEach(function(b,i){b.classList.toggle('active',(i===0&&t==='ledger')||(i===1&&t==='summary'))});renderKitty()}
 function renderKitty(){
   var tin=E.filter(function(e){return e.type==="IN"}).reduce(function(s,e){return s+e.amount},0);
   var tout=E.filter(function(e){return e.type==="OUT"}).reduce(function(s,e){return s+e.amount},0);
   var bal=tin-tout,C={};
-  E.filter(function(e){return e.type==="IN"}).forEach(function(e){
-    if(!C[e.name])C[e.name]={name:e.name,roll:e.roll,total:0};
-    C[e.name].total+=e.amount;
-  });
-  document.getElementById("k-stats").innerHTML=[
-    {l:"Total Collected",v:fmtK(tin),c:"#34d399"},
-    {l:"Total Spent",v:fmtK(tout),c:"#f87171"},
-    {l:"Balance",v:fmtK(bal),c:"#60a5fa"},
-    {l:"Contributors",v:Object.keys(C).length,c:"#c4b5fd"}
-  ].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
-
+  E.filter(function(e){return e.type==="IN"}).forEach(function(e){if(!C[e.name])C[e.name]={name:e.name,roll:e.roll,total:0};C[e.name].total+=e.amount});
+  document.getElementById("k-stats").innerHTML=[{l:"Total Collected",v:fmtK(tin),c:"#34d399"},{l:"Total Spent",v:fmtK(tout),c:"#f87171"},{l:"Balance",v:fmtK(bal),c:"#60a5fa"},{l:"Contributors",v:Object.keys(C).length,c:"#c4b5fd"}].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
   var view=document.getElementById("k-view");
   if(ktab==="ledger"){
     var sorted=E.slice().sort(function(a,b){return a.date.localeCompare(b.date)}),run=0;
-    var rows=sorted.map(function(e){
-      run+=e.type==="IN"?e.amount:-e.amount;
-      var rc=e.roll?'<span class="rb">'+e.roll+'</span>':'<span class="nn">-</span>';
-      var ac=e.type==="IN"?"#34d399":"#f87171",ap=e.type==="IN"?"+":"-";
-      var bc=e.type==="IN"?"bin":"bout",bt=e.type==="IN"?"IN":"OUT";
-      return '<tr><td class="dd">'+fdate(e.date)+'</td><td class="dn">'+e.name+'</td><td>'+rc+'</td><td><span class="badge '+bc+'">'+bt+'</span></td><td class="da" style="color:'+ac+'">'+ap+fmtK(e.amount)+'</td><td class="dr">'+fmtK(run)+'</td><td class="dn2">'+(e.note||"")+'</td></tr>';
-    }).join("");
-    view.innerHTML='<div class="tw"><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Type</th><th>Amount</th><th>Balance</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+    var rows=sorted.map(function(e){run+=e.type==="IN"?e.amount:-e.amount;var rc=e.roll?'<span class="rb">'+e.roll+'</span>':'<span class="nn">-</span>';var ac=e.type==="IN"?"#34d399":"#f87171",ap=e.type==="IN"?"+":"-";var bc=e.type==="IN"?"bin":"bout",bt=e.type==="IN"?"IN":"OUT";return '<tr><td class="dd">'+fdate(e.date)+'</td><td class="dn">'+e.name+'</td><td>'+rc+'</td><td><span class="badge '+bc+'">'+bt+'</span></td><td class="da" style="color:'+ac+'">'+ap+fmtK(e.amount)+'</td><td class="dr">'+fmtK(run)+'</td><td class="dn2">'+(e.note||"")+'</td></tr>'}).join("");
+    view.innerHTML='<div class="tw"><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Type</th><th>Amount</th><th>Balance</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
   } else {
-    var cards=Object.values(C).sort(function(a,b){return b.total-a.total}).map(function(c){
-      var rl=c.roll?'<div class="smr">'+c.roll+'</div>':'<div class="smnr">Roll not recorded</div>';
-      return '<div class="smc"><div><div class="smn">'+c.name+'</div>'+rl+'</div><div class="sma">'+fmtK(c.total)+'</div></div>';
-    }).join("");
-    view.innerHTML='<div class="summary">'+cards+'</div>';
+    var cards=Object.values(C).sort(function(a,b){return b.total-a.total}).map(function(c){var rl=c.roll?'<div class="smr">'+c.roll+'</div>':'<div class="smnr">Roll not recorded</div>';return '<div class="smc"><div><div class="smn">'+c.name+'</div>'+rl+'</div><div class="sma">'+fmtK(c.total)+'</div></div>'}).join("");
+    view.innerHTML='<div class="summary">'+cards+'</div>'
   }
 }
 renderKitty();
 
-/* ══════════════════════════════════════════
-   BUDGET PLANNER
-══════════════════════════════════════════ */
+/* ── BUDGET ── */
 function fmtB(n){return "Rs."+Number(Math.round(n)).toLocaleString("en-IN")}
 function gv(id){return parseFloat(document.getElementById(id).value)||0}
-
 function renderBudget(){
-  var kitty   = gv('b-kitty');
-  var heads   = gv('b-heads');
-  var contrib = gv('b-contrib');
-  var std     = gv('b-std');
-  var photo   = gv('b-photo');
-  var trans   = gv('b-transport');
-  var decor   = gv('b-decor');
-  var banner  = gv('b-banner');
-  var food    = gv('b-food');
-  var gifts   = gv('b-gifts');
-  var misc    = gv('b-misc');
-
-  var totalFixed = photo + trans + decor + banner;
-  var totalVar   = (food + gifts) * heads;
-  var totalBudget= totalFixed + totalVar + misc;
-  var perHead    = heads > 0 ? totalBudget / heads : 0;
-  var remaining  = Math.max(heads - contrib, 0);
-  var projKitty  = kitty + remaining * std;
-  var bufferNow  = kitty - totalBudget;
-  var bufferProj = projKitty - totalBudget;
-
-  document.getElementById('b-total-fixed').textContent = fmtB(totalFixed);
-  document.getElementById('b-food-sub').textContent    = fmtB(food * heads) + ' total (' + heads + ' heads)';
-  document.getElementById('b-gifts-sub').textContent   = fmtB(gifts * heads) + ' total (' + heads + ' heads)';
-  document.getElementById('b-total-var').textContent   = fmtB(totalVar);
-  document.getElementById('b-ph-total').textContent    = fmtB(totalBudget);
-  document.getElementById('b-ph-val').textContent      = fmtB(perHead);
-
-  // Buffer — current kitty
-  var cn = document.getElementById('b-card-now');
-  var nowPos = bufferNow >= 0;
-  cn.style.background = nowPos ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
-  cn.style.borderColor = nowPos ? '#10b981' : '#ef4444';
-  cn.innerHTML = '<div class="bc-label" style="color:'+(nowPos?'#10b981':'#ef4444')+'">Current Kitty Buffer</div>'
-    + '<div class="bc-val" style="color:'+(nowPos?'#34d399':'#f87171')+'">'+(nowPos?'+':'-')+fmtB(Math.abs(bufferNow))+'</div>'
-    + '<div class="bc-note" style="color:'+(nowPos?'#6ee7b7':'#fca5a5')+'">'
-    + (nowPos ? '✓ Current kitty covers full budget' : '⚠ Shortfall at current kitty')
-    + '</div>';
-
-  // Buffer — projected kitty
-  var cp = document.getElementById('b-card-proj');
-  var projPos = bufferProj >= 0;
-  cp.style.background = projPos ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
-  cp.style.borderColor = projPos ? '#10b981' : '#ef4444';
-  cp.innerHTML = '<div class="bc-label" style="color:'+(projPos?'#10b981':'#ef4444')+'">Projected Kitty Buffer</div>'
-    + '<div class="bc-val" style="color:'+(projPos?'#34d399':'#f87171')+'">'+(projPos?'+':'-')+fmtB(Math.abs(bufferProj))+'</div>'
-    + '<div class="bc-note" style="color:#64748b">Assumes '+remaining+' more contributors × '+fmtB(std)+' each (proj. kitty: '+fmtB(projKitty)+')</div>';
+  var kitty=gv('b-kitty'),heads=gv('b-heads'),contrib=gv('b-contrib'),std=gv('b-std');
+  var photo=gv('b-photo'),trans=gv('b-transport'),decor=gv('b-decor'),banner=gv('b-banner');
+  var food=gv('b-food'),gifts=gv('b-gifts'),misc=gv('b-misc');
+  var totalFixed=photo+trans+decor+banner,totalVar=(food+gifts)*heads;
+  var totalBudget=totalFixed+totalVar+misc,perHead=heads>0?totalBudget/heads:0;
+  var remaining=Math.max(heads-contrib,0),projKitty=kitty+remaining*std;
+  var bufferNow=kitty-totalBudget,bufferProj=projKitty-totalBudget;
+  document.getElementById('b-total-fixed').textContent=fmtB(totalFixed);
+  document.getElementById('b-food-sub').textContent=fmtB(food*heads)+' total ('+heads+' heads)';
+  document.getElementById('b-gifts-sub').textContent=fmtB(gifts*heads)+' total ('+heads+' heads)';
+  document.getElementById('b-total-var').textContent=fmtB(totalVar);
+  document.getElementById('b-ph-total').textContent=fmtB(totalBudget);
+  document.getElementById('b-ph-val').textContent=fmtB(perHead);
+  var cn=document.getElementById('b-card-now'),np=bufferNow>=0;
+  cn.style.background=np?'rgba(16,185,129,0.08)':'rgba(239,68,68,0.08)';cn.style.borderColor=np?'#10b981':'#ef4444';
+  cn.innerHTML='<div class="bc-label" style="color:'+(np?'#10b981':'#ef4444')+'">Current Kitty Buffer</div><div class="bc-val" style="color:'+(np?'#34d399':'#f87171')+'">'+(np?'+':'-')+fmtB(Math.abs(bufferNow))+'</div><div class="bc-note" style="color:'+(np?'#6ee7b7':'#fca5a5')+'">'+(np?'✓ Current kitty covers full budget':'⚠ Shortfall at current kitty')+'</div>';
+  var cp=document.getElementById('b-card-proj'),pp=bufferProj>=0;
+  cp.style.background=pp?'rgba(16,185,129,0.08)':'rgba(239,68,68,0.08)';cp.style.borderColor=pp?'#10b981':'#ef4444';
+  cp.innerHTML='<div class="bc-label" style="color:'+(pp?'#10b981':'#ef4444')+'">Projected Kitty Buffer</div><div class="bc-val" style="color:'+(pp?'#34d399':'#f87171')+'">'+(pp?'+':'-')+fmtB(Math.abs(bufferProj))+'</div><div class="bc-note" style="color:#64748b">Assumes '+remaining+' more contributors × '+fmtB(std)+' each (proj. kitty: '+fmtB(projKitty)+')</div>';
 }
 renderBudget();
-</script>
 
-<!-- ════════════════════════════════════
-     PAGE 3 — TASK TRACKER
-════════════════════════════════════ -->
-<div id="page-tasks" class="page">
-  <div class="hdr">
-    <div class="eyebrow">Class of 1997 &middot; 25 July 2026</div>
-    <h1>&#x2705; Task Tracker</h1>
-    <div class="sub">Organiser responsibilities &middot; Updated 14 Jun 2026</div>
-  </div>
-  <div class="t-summary" id="t-stats"></div>
-  <div class="filter-row" id="t-filters">
-    <button class="fbtn active" onclick="setTFilter('all')">All</button>
-    <button class="fbtn" onclick="setTFilter('todo')">To Do</button>
-    <button class="fbtn" onclick="setTFilter('inprog')">In Progress</button>
-    <button class="fbtn" onclick="setTFilter('blocked')">Needs Person</button>
-    <button class="fbtn" onclick="setTFilter('done')">Done</button>
-  </div>
-  <div id="t-view"></div>
-  <div class="footer">Task Tracker &middot; Class of '97 &middot; Reunion 25 Jul 2026</div>
-</div>
-<script>
-/* ══════════════════════════════════════════
-   TASK TRACKER
-══════════════════════════════════════════ */
-var TASKS = [
+/* ── TASKS ── */
+// status: todo | inprog | blocked | done
+// owners: [{name, needed}]
+var BUCKETS = [
   {
-    id:1, title:"Jute Bag",
-    desc:"Finalize size, design, features and price. Talk to vendor. Place order once headcount is confirmed.",
-    status:"inprog",
-    owners:[{name:"Muthulakshmi",needed:false},{name:"Bharathy",needed:false}],
-    deadline:"2026-07-05",
-    priority:"high",
-    notes:"Need owner to drive this end-to-end — vendor coordination, design approval, order placement."
+    id:"broadcast", icon:"📢", title:"Broadcasting & Communication",
+    tasks:[
+      {id:"b1", title:"Post: Revised contribution amount",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-17",
+       note:"Send in SACOE group in the next couple of days."},
+      {id:"b2", title:"Post: Last date for contribution",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-20",
+       note:"Announce contribution deadline clearly."},
+      {id:"b3", title:"Poll: Veg / Non-Veg count",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-22",
+       note:"Post vote/poll in group for food preference count."},
+      {id:"b4", title:"Post: Call for sponsorships",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-25",
+       note:"Ask if anyone wants to sponsor any part of the event."},
+      {id:"b5", title:"Post: Entrepreneurs — stalls & speaking slots",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-25",
+       note:"Invite entrepreneur classmates to reach out if interested in a stall or short talk."}
+    ]
   },
   {
-    id:2, title:"Finalize 3rd Gift",
-    desc:"Decide on the third gift item — confirm type, vendor, cost per head.",
-    status:"todo",
-    owners:[{name:"Bala",needed:false}],
-    deadline:"2026-07-01",
-    priority:"high",
-    notes:""
+    id:"kittyf", icon:"💰", title:"Kitty & Finance",
+    tasks:[
+      {id:"k1", title:"Decide revised contribution amount",
+       owners:[{n:"Kathir",x:false},{n:"SRB",x:false},{n:"Bala",x:false}],
+       status:"inprog", deadline:"2026-06-17",
+       note:"Discuss and finalize among core organizers first."},
+      {id:"k2", title:"Announce last date for contribution",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-20",
+       note:"Coordinate with broadcasting team."},
+      {id:"k3", title:"Call for sponsorships",
+       owners:[{n:"Kathir",x:false},{n:"SRB",x:false}],
+       status:"todo", deadline:"2026-06-25",
+       note:"Reach out to classmates who may want to sponsor an item or segment."}
+    ]
   },
   {
-    id:3, title:"Plan for Activities",
-    desc:"Plan games, icebreakers or group activities for the event.",
-    status:"blocked",
-    owners:[{name:"Bala",needed:false},{name:"Need 2 more",needed:true},{name:"Need 2 more",needed:true}],
-    deadline:"2026-07-10",
-    priority:"medium",
-    notes:"2 more volunteers needed to join Bala."
+    id:"gifts", icon:"🎁", title:"Gifts & Mementos",
+    tasks:[
+      {id:"g1", title:"Jute Bag — Confirm vendor & design",
+       owners:[{n:"SRB",x:false},{n:"Muthulakshmi",x:false}],
+       status:"inprog", deadline:"2026-06-21",
+       note:"Finalize size, design, features, price by this weekend. Place order early next week."},
+      {id:"g3", title:"3rd Gift — Finalize by weekend",
+       owners:[{n:"Bala",x:false}],
+       status:"inprog", deadline:"2026-06-21",
+       note:"Confirm item, vendor and cost per head."},
+      {id:"g2", title:"Jute Bag — Place order",
+       owners:[{n:"SRB",x:false},{n:"Muthulakshmi",x:false}],
+       status:"todo", deadline:"2026-06-23",
+       note:"Once design and headcount confirmed."},
+      {id:"g4", title:"3rd Gift — Place order",
+       owners:[{n:"Bala",x:false}],
+       status:"todo", deadline:"2026-06-23",
+       note:""},
+      {id:"g5", title:"Souvenir / Memory Book",
+       owners:[{n:"Bala",x:false},{n:"Kathir",x:false},{n:"Need 1 (girls side)",x:true}],
+       status:"blocked", deadline:"2026-07-10",
+       note:"1 volunteer needed from girls side for privacy-sensitive content collection."}
+    ]
   },
   {
-    id:4, title:"Hall Arrangement, Decoration & Photo Booth",
-    desc:"Coordinate hall setup, decoration, welcome board and photo booth on event day.",
-    status:"blocked",
-    owners:[{name:"Need at least 1",needed:true}],
-    deadline:"2026-07-25",
-    priority:"high",
-    notes:"No owner assigned yet — critical task for event day."
+    id:"food", icon:"🍽️", title:"Food & Catering",
+    tasks:[
+      {id:"f1", title:"Get quotes for lunch buffet",
+       owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
+       status:"inprog", deadline:"2026-06-21",
+       note:"Get quotes, share menus with organizing committee."},
+      {id:"f5", title:"Poll: Collect Veg / Non-Veg count",
+       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
+       status:"todo", deadline:"2026-06-22",
+       note:"Post poll in SACOE group to collect food preference count."},
+      {id:"f2", title:"Finalize lunch buffet vendor",
+       owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
+       status:"todo", deadline:"2026-06-28",
+       note:"Decide by 27/28 Jun weekend."},
+      {id:"f4", title:"Cake — Coordinate with sponsor & place order",
+       owners:[{n:"Kathir",x:false},{n:"Need 1",x:true}],
+       status:"blocked", deadline:"2026-07-15",
+       note:"Confirm cake sponsor and place order well in advance."},
+      {id:"f3", title:"Shanthi Bakery — Order tea & snacks",
+       owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
+       status:"todo", deadline:"2026-07-18",
+       note:"Place order one week before the event."}
+    ]
   },
   {
-    id:5, title:"Photo / Video Coordination",
-    desc:"Coordinate with photographers/videographers. Manage coverage on event day.",
-    status:"inprog",
-    owners:[{name:"Kathir",needed:false}],
-    deadline:"2026-07-20",
-    priority:"high",
-    notes:""
+    id:"college", icon:"🏫", title:"College Coordination",
+    tasks:[
+      {id:"c1", title:"Logo finalization",
+       owners:[{n:"Kathir",x:false}],
+       status:"inprog", deadline:"2026-06-21",
+       note:"Finalize reunion logo on Gamma this week."},
+      {id:"c2", title:"Get invitations ready",
+       owners:[{n:"Bala",x:false}],
+       status:"inprog", deadline:"2026-06-25",
+       note:""},
+      {id:"c3", title:"Visit college — Invite Principal & Secretary",
+       owners:[{n:"Bala",x:false},{n:"Starvin",x:false},{n:"Need 1 more",x:true}],
+       status:"todo", deadline:"2026-06-28",
+       note:"Weekend visit on 27/28 Jun. Also meet photographer, decorator, caterer on same trip."},
+      {id:"c4", title:"Meet photographer at college",
+       owners:[{n:"Bala",x:false},{n:"Starvin",x:false}],
+       status:"todo", deadline:"2026-06-28",
+       note:"During 27/28 Jun college visit."},
+      {id:"c5", title:"Meet decorator at college",
+       owners:[{n:"Bala",x:false}],
+       status:"todo", deadline:"2026-06-28",
+       note:"During 27/28 Jun college visit."},
+      {id:"c6", title:"Meet caterer at college",
+       owners:[{n:"Bala",x:false},{n:"Seethamani",x:false}],
+       status:"todo", deadline:"2026-06-28",
+       note:"If possible during 27/28 Jun visit."}
+    ]
   },
   {
-    id:6, title:"Food Responsibility",
-    desc:"Coordinate with caterer. Confirm menu, headcount and delivery/setup on event day.",
-    status:"inprog",
-    owners:[{name:"Bala",needed:false},{name:"Kathir",needed:false},{name:"Seethamani",needed:false}],
-    deadline:"2026-07-20",
-    priority:"high",
-    notes:""
+    id:"events", icon:"📅", title:"Events & Activities",
+    tasks:[
+      {id:"e1", title:"Form events committee",
+       owners:[{n:"Kathir (Mech)",x:false},{n:"Need 1 (EEE)",x:true},{n:"Need 1 (CSE)",x:true}],
+       status:"blocked", deadline:"2026-06-25",
+       note:"One rep needed from EEE and one from CSE to join Kathir (Mech)."},
+      {id:"e2", title:"Plan the full day schedule",
+       owners:[{n:"Events Committee",x:false}],
+       status:"todo", deadline:"2026-07-05",
+       note:"Map out timeline for the entire day — arrivals, sessions, lunch, activities, group photo, closing."},
+      {id:"e3", title:"Plan games & activities",
+       owners:[{n:"Bala",x:false},{n:"Need 2 more",x:true}],
+       status:"blocked", deadline:"2026-07-10",
+       note:"2 more volunteers needed. Think icebreakers, team games, cultural items."}
+    ]
   },
   {
-    id:7, title:"Souvenir / Memory Book",
-    desc:"Coordinate souvenir design and production. Girls-side co-ordinator needed for privacy-sensitive content collection.",
-    status:"blocked",
-    owners:[{name:"Bala",needed:false},{name:"Kathir",needed:false},{name:"Need 1 (girls side)",needed:true}],
-    deadline:"2026-07-10",
-    priority:"high",
-    notes:"1 more person needed from girls side for privacy-sensitive coordination."
-  },
-  {
-    id:8, title:"Local Transport",
-    desc:"Arrange local transport for attendees on event day (airport/station pickup, inter-venue movement).",
-    status:"blocked",
-    owners:[{name:"Need 2 people",needed:true},{name:"Need 2 people",needed:true}],
-    deadline:"2026-07-15",
-    priority:"medium",
-    notes:"No owners assigned yet."
-  },
-  {
-    id:9, title:"Coordination with College",
-    desc:"Liaise with college management for venue permissions, facilities and logistics.",
-    status:"inprog",
-    owners:[{name:"Starvin",needed:false},{name:"Need 1 more",needed:true}],
-    deadline:"2026-07-10",
-    priority:"high",
-    notes:"1 more person needed to support Starvin."
-  },
-  {
-    id:10, title:"Broadcasting & Group Communication",
-    desc:"Post updates, polls and voting in the WhatsApp group. Keep batch informed and engaged.",
-    status:"inprog",
-    owners:[{name:"SRB",needed:false},{name:"Marshia",needed:false}],
-    deadline:"2026-07-25",
-    priority:"medium",
-    notes:""
+    id:"venue", icon:"🏛️", title:"Venue, Logistics & Media",
+    tasks:[
+      {id:"v4", title:"Photo & video — book photographer",
+       owners:[{n:"Kathir",x:false}],
+       status:"inprog", deadline:"2026-06-28",
+       note:"Confirm photographer and videographer."},
+      {id:"v3", title:"Local transport coordination",
+       owners:[{n:"Need 2 people",x:true}],
+       status:"blocked", deadline:"2026-07-15",
+       note:"Station/airport pickups and inter-venue movement on event day."},
+      {id:"v1", title:"Hall arrangement & decoration",
+       owners:[{n:"Need at least 1",x:true}],
+       status:"blocked", deadline:"2026-07-25",
+       note:"No owner yet — critical event-day task. Includes welcome board and overall setup."},
+      {id:"v2", title:"Photo booth setup",
+       owners:[{n:"Need 1",x:true}],
+       status:"blocked", deadline:"2026-07-25",
+       note:"Coordinate props, backdrop and placement."},
+      {id:"v5", title:"Photo & video — event day coordination",
+       owners:[{n:"Kathir",x:false}],
+       status:"todo", deadline:"2026-07-25",
+       note:"Manage coverage throughout the day."}
+    ]
   }
 ];
 
-var tfilter = "all";
+var tActiveFilter = "all";
+var bucketStates = {};
 
-function setTFilter(f){
-  tfilter = f;
-  document.querySelectorAll('.fbtn').forEach(function(b,i){
-    var map=["all","todo","inprog","blocked","done"];
-    b.classList.toggle('active', map[i]===f);
-  });
+function setTF(f, btn){
+  tActiveFilter = f;
+  document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
   renderTasks();
 }
 
-function taskCardClass(t){
-  if(t.status==="done") return "done";
-  var hasNeeded = t.owners.some(function(o){return o.needed});
-  if(hasNeeded) return "urgent";
-  if(t.deadline){
-    var daysLeft = Math.ceil((new Date(t.deadline)-new Date())/(1000*60*60*24));
-    if(daysLeft<=7) return "urgent";
-    if(daysLeft<=14) return "warning";
-  }
-  return "ok";
+function toggleBucket(id){
+  bucketStates[id] = !bucketStates[id];
+  renderTasks();
 }
 
-function deadlineLabel(dl){
+function dlLabel(dl){
   if(!dl) return "";
-  var d = new Date(dl);
-  var daysLeft = Math.ceil((d - new Date())/(1000*60*60*24));
-  var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  var label = d.getDate()+" "+months[d.getMonth()]+" '26";
-  var cls = daysLeft<0?"overdue":daysLeft<=7?"soon":"";
-  var prefix = daysLeft<0?"Overdue · ":daysLeft===0?"Today · ":daysLeft<=7?""+daysLeft+"d left · ":"";
-  return '<span class="task-deadline '+cls+'">📅 '+prefix+label+'</span>';
+  var d=new Date(dl), now=new Date();
+  now.setHours(0,0,0,0);
+  var days=Math.ceil((d-now)/(1000*60*60*24));
+  var mo=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var lbl=d.getDate()+" "+mo[d.getMonth()]+" '26";
+  var cls=days<0?"overdue":days<=5?"soon":"";
+  var pre=days<0?"Overdue · ":days===0?"Today · ":days<=5?(days+"d · "):"";
+  return '<span class="stask-dl '+cls+'">📅 '+pre+lbl+'</span>';
 }
 
-function statusBadge(s){
-  var map={
-    todo:['s-todo','To Do'],
-    inprog:['s-inprog','In Progress'],
-    blocked:['s-blocked','Needs Person'],
-    done:['s-done','Done']
-  };
-  var m=map[s]||map.todo;
-  return '<span class="sbadge '+m[0]+'">'+m[1]+'</span>';
+function sBadge(s){
+  var m={todo:["s-todo","To Do"],inprog:["s-inprog","In Progress"],blocked:["s-blocked","Needs Person"],done:["s-done","Done"]};
+  var x=m[s]||m.todo;
+  return '<span class="sbadge '+x[0]+'">'+x[1]+'</span>';
 }
 
 function renderTasks(){
-  var filtered = tfilter==="all" ? TASKS : TASKS.filter(function(t){return t.status===tfilter});
-
-  // Stats
+  // Global stats across all subtasks
+  var allTasks=[];
+  BUCKETS.forEach(function(b){b.tasks.forEach(function(t){allTasks.push(t)})});
   var counts={todo:0,inprog:0,blocked:0,done:0};
-  TASKS.forEach(function(t){
-    if(counts[t.status]!==undefined) counts[t.status]++;
-  });
-  var needPerson = TASKS.filter(function(t){return t.owners.some(function(o){return o.needed})}).length;
+  allTasks.forEach(function(t){if(counts[t.status]!==undefined)counts[t.status]++});
+  var needPerson=allTasks.filter(function(t){return t.owners.some(function(o){return o.x})}).length;
   document.getElementById('t-stats').innerHTML=[
-    {l:"Total Tasks",v:TASKS.length,c:"#c4b5fd"},
+    {l:"Total Subtasks",v:allTasks.length,c:"#c4b5fd"},
     {l:"In Progress",v:counts.inprog,c:"#34d399"},
     {l:"Needs Person",v:needPerson,c:"#f87171"},
     {l:"Done",v:counts.done,c:"#60a5fa"}
   ].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
 
-  // Cards
-  var html = filtered.map(function(t){
-    var cc = taskCardClass(t);
-    var owners = t.owners.map(function(o){
-      return '<span class="owner-chip '+(o.needed?"owner-needed":"owner-assigned")+'">'+o.name+'</span>';
+  var html = BUCKETS.map(function(bucket){
+    var filtered = tActiveFilter==="all"
+      ? bucket.tasks.slice()
+      : bucket.tasks.filter(function(t){return t.status===tActiveFilter});
+    filtered.sort(function(a,b){
+      if(!a.deadline&&!b.deadline) return 0;
+      if(!a.deadline) return 1;
+      if(!b.deadline) return -1;
+      return a.deadline.localeCompare(b.deadline);
+    });
+    if(filtered.length===0) return "";
+
+    var done=bucket.tasks.filter(function(t){return t.status==="done"}).length;
+    var total=bucket.tasks.length;
+    var hasBlocked=filtered.some(function(t){return t.status==="blocked"||t.owners.some(function(o){return o.x})});
+    var isOpen = bucketStates[bucket.id]!==false; // default open
+
+    var alert = hasBlocked ? '<span class="bucket-alert">⚠ Needs Person</span>' : "";
+    var prog = '<span class="bucket-prog">'+done+'/'+total+' done</span>';
+
+    var rows = filtered.map(function(t){
+      var isDone = t.status==="done";
+      var owners = t.owners.map(function(o){
+        return '<span class="owner-chip '+(o.x?"oc-needed":"oc-assigned")+'">'+o.n+'</span>';
+      }).join("");
+      return '<div class="stask">'+
+        '<div class="stask-left">'+
+          '<div class="stask-top">'+
+            sBadge(t.status)+
+            '<span class="stask-title'+(isDone?" done-title":"")+'">'+t.title+'</span>'+
+          '</div>'+
+          (t.note?'<div class="stask-note'+(t.owners.some(function(o){return o.x})?" warn":"")+'">'+t.note+'</div>':"")+
+          '<div class="stask-owners">'+owners+dlLabel(t.deadline)+'</div>'+
+        '</div>'+
+      '</div>';
     }).join("");
-    return '<div class="task-card '+cc+'">'
-      +'<div class="task-num">#'+t.id+'</div>'
-      +'<div class="task-top"><div class="task-title">'+t.title+'</div>'+statusBadge(t.status)+'</div>'
-      +'<div class="task-desc">'+t.desc+(t.notes?' <span style="color:#f59e0b;font-style:italic">⚠ '+t.notes+'</span>':'')+'</div>'
-      +'<div class="task-meta"><div class="task-owners">'+owners+'</div>'+deadlineLabel(t.deadline)+'</div>'
-      +'</div>';
+
+    return '<div class="bucket'+(isOpen?" open":"")+'">'+
+      '<div class="bucket-header" onclick="toggleBucket(\''+bucket.id+'\')">'+
+        '<div class="bucket-left">'+
+          '<span class="bucket-icon">'+bucket.icon+'</span>'+
+          '<span class="bucket-title">'+bucket.title+'</span>'+
+          alert+
+        '</div>'+
+        '<div class="bucket-right">'+prog+'<span class="bucket-toggle">▼</span></div>'+
+      '</div>'+
+      '<div class="bucket-body">'+rows+'</div>'+
+    '</div>';
   }).join("");
 
-  document.getElementById('t-view').innerHTML = html || '<div style="color:#4a6080;text-align:center;padding:40px">No tasks in this filter.</div>';
+  document.getElementById('t-view').innerHTML = html || '<div style="color:#4a6080;text-align:center;padding:40px">No tasks match this filter.</div>';
 }
 renderTasks();
 </script>
