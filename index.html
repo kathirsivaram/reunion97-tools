@@ -199,12 +199,18 @@ td{padding:10px 12px;vertical-align:middle}
     <div class="sub">Organiser responsibilities · Updated 15 Jun 2026</div>
   </div>
   <div class="stats" id="t-stats"></div>
-  <div class="filter-row">
-    <button class="fbtn active" onclick="setTF('all',this)">All</button>
-    <button class="fbtn" onclick="setTF('inprog',this)">In Progress</button>
-    <button class="fbtn" onclick="setTF('todo',this)">To Do</button>
-    <button class="fbtn" onclick="setTF('blocked',this)">Needs Person</button>
-    <button class="fbtn" onclick="setTF('done',this)">Done</button>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+    <div class="filter-row" style="margin-bottom:0">
+      <button class="fbtn" id="fbtn-all" onclick="setTF('all',this)">All</button>
+      <button class="fbtn" onclick="setTF('inprog',this)">In Progress</button>
+      <button class="fbtn" onclick="setTF('todo',this)">To Do</button>
+      <button class="fbtn" onclick="setTF('blocked',this)">Needs Person</button>
+      <button class="fbtn" onclick="setTF('done',this)">Done</button>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="fbtn" onclick="expandAll()">Expand All</button>
+      <button class="fbtn" onclick="collapseAll()">Collapse All</button>
+    </div>
   </div>
   <div id="t-view"></div>
   <div class="footer">Task Tracker · Class of '97 · Reunion 25 Jul 2026</div>
@@ -351,8 +357,8 @@ var BUCKETS = [
     tasks:[
       {id:"k1", title:"Decide revised contribution amount",
        owners:[{n:"Kathir",x:false},{n:"SRB",x:false},{n:"Bala",x:false}],
-       status:"inprog", deadline:"2026-06-17",
-       note:"Discuss and finalize among core organizers first."},
+       status:"done", deadline:"2026-06-17",
+       note:"Decided."},
       {id:"k2", title:"Announce last date for contribution",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
        status:"todo", deadline:"2026-06-20",
@@ -489,10 +495,28 @@ var BUCKETS = [
 var tActiveFilter = "all";
 var bucketStates = {};
 
+function expandAll(){
+  BUCKETS.forEach(function(b){bucketStates[b.id]=true});
+  renderTasks();
+}
+function collapseAll(){
+  BUCKETS.forEach(function(b){bucketStates[b.id]=false});
+  renderTasks();
+}
 function setTF(f, btn){
   tActiveFilter = f;
   document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
+  if(f === "all"){
+    // All = expand everything
+    BUCKETS.forEach(function(b){bucketStates[b.id]=true});
+  } else {
+    // Auto-expand buckets with matching tasks, collapse rest
+    BUCKETS.forEach(function(b){
+      var hasMatch = b.tasks.some(function(t){return t.status===f});
+      bucketStates[b.id] = hasMatch;
+    });
+  }
   renderTasks();
 }
 
@@ -520,7 +544,6 @@ function sBadge(s){
 }
 
 function renderTasks(){
-  // Global stats across all subtasks
   var allTasks=[];
   BUCKETS.forEach(function(b){b.tasks.forEach(function(t){allTasks.push(t)})});
   var counts={todo:0,inprog:0,blocked:0,done:0};
@@ -534,56 +557,88 @@ function renderTasks(){
   ].map(function(x){return '<div class="sc"><div class="sl">'+x.l+'</div><div class="sv" style="color:'+x.c+'">'+x.v+'</div></div>'}).join("");
 
   var html = BUCKETS.map(function(bucket){
+    // Filter tasks
     var filtered = tActiveFilter==="all"
       ? bucket.tasks.slice()
       : bucket.tasks.filter(function(t){return t.status===tActiveFilter});
+    if(filtered.length===0) return "";
+
+    // Sort: open tasks by deadline, done tasks at bottom
     filtered.sort(function(a,b){
-      if(!a.deadline&&!b.deadline) return 0;
+      if(a.status==="done" && b.status!=="done") return 1;
+      if(a.status!=="done" && b.status==="done") return -1;
+      if(!a.deadline && !b.deadline) return 0;
       if(!a.deadline) return 1;
       if(!b.deadline) return -1;
       return a.deadline.localeCompare(b.deadline);
     });
-    if(filtered.length===0) return "";
 
     var done=bucket.tasks.filter(function(t){return t.status==="done"}).length;
     var total=bucket.tasks.length;
-    var hasBlocked=filtered.some(function(t){return t.status==="blocked"||t.owners.some(function(o){return o.x})});
-    var isOpen = bucketStates[bucket.id]!==false; // default open
+    var pending=total-done;
+    var hasBlocked=bucket.tasks.some(function(t){return t.status==="blocked"||t.owners.some(function(o){return o.x})});
+    var isOpen=bucketStates[bucket.id]===true;
 
-    var alert = hasBlocked ? '<span class="bucket-alert">⚠ Needs Person</span>' : "";
-    var prog = '<span class="bucket-prog">'+done+'/'+total+' done</span>';
+    // Pending pill
+    var pendingCol=pending===0?"#34d399":pending<=2?"#fb923c":"#f87171";
+    var prog='<span style="font-family:DM Mono,monospace;font-size:13px;font-weight:700;color:'+pendingCol+';background:rgba(0,0,0,0.25);padding:3px 10px;border-radius:12px;border:1.5px solid '+pendingCol+'33">'+(pending===0?"✓ All done":pending+" pending")+'</span>';
 
-    var rows = filtered.map(function(t){
-      var isDone = t.status==="done";
-      var owners = t.owners.map(function(o){
+    // Nearest open deadline
+    var openTasks=bucket.tasks.filter(function(t){return t.status!=="done"&&t.deadline});
+    openTasks.sort(function(a,b){return a.deadline.localeCompare(b.deadline)});
+    var nearestDl="";
+    if(openTasks.length>0){
+      var nd=new Date(openTasks[0].deadline),now2=new Date();
+      now2.setHours(0,0,0,0);
+      var dLeft=Math.ceil((nd-now2)/(1000*60*60*24));
+      var mo2=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      var dlStr=nd.getDate()+" "+mo2[nd.getMonth()]+" '26";
+      var dlCol=dLeft<0?"#f87171":dLeft<=5?"#fb923c":"#fcd34d";
+      nearestDl='<span style="font-family:DM Mono,monospace;font-size:11px;color:'+dlCol+'">📅 '+dlStr+'</span>';
+    }
+
+    var alert=hasBlocked?'<span class="bucket-alert">⚠ Needs Person</span>':"";
+
+    // Build subtask rows
+    var rows="";
+    var addedDivider=false;
+    for(var i=0;i<filtered.length;i++){
+      var t=filtered[i];
+      var isDone=t.status==="done";
+      // Insert divider before first done task
+      if(isDone && !addedDivider && tActiveFilter==="all"){
+        rows+='<div style="padding:5px 16px;font-size:10px;letter-spacing:1.5px;color:#2e4060;font-family:DM Mono,monospace;text-transform:uppercase;border-top:1px solid #1a2e47">Completed</div>';
+        addedDivider=true;
+      }
+      var owners=t.owners.map(function(o){
         return '<span class="owner-chip '+(o.x?"oc-needed":"oc-assigned")+'">'+o.n+'</span>';
       }).join("");
-      return '<div class="stask">'+
+      rows+='<div class="stask" style="'+(isDone?"opacity:0.4;":"")+'">'+
         '<div class="stask-left">'+
           '<div class="stask-top">'+
             sBadge(t.status)+
             '<span class="stask-title'+(isDone?" done-title":"")+'">'+t.title+'</span>'+
           '</div>'+
-          (t.note?'<div class="stask-note'+(t.owners.some(function(o){return o.x})?" warn":"")+'">'+t.note+'</div>':"")+
-          '<div class="stask-owners">'+owners+dlLabel(t.deadline)+'</div>'+
+          (!isDone&&t.note?'<div class="stask-note'+(t.owners.some(function(o){return o.x})?" warn":"")+'">'+t.note+'</div>':"")+
+          '<div class="stask-owners">'+(isDone?"":owners+dlLabel(t.deadline))+'</div>'+
         '</div>'+
       '</div>';
-    }).join("");
+    }
 
     return '<div class="bucket'+(isOpen?" open":"")+'">'+
-      '<div class="bucket-header" onclick="toggleBucket(\''+bucket.id+'\')">'+
+      '<div class="bucket-header" onclick="toggleBucket(\'' + bucket.id + '\')">'+
         '<div class="bucket-left">'+
           '<span class="bucket-icon">'+bucket.icon+'</span>'+
           '<span class="bucket-title">'+bucket.title+'</span>'+
           alert+
         '</div>'+
-        '<div class="bucket-right">'+prog+'<span class="bucket-toggle">▼</span></div>'+
+        '<div class="bucket-right">'+nearestDl+prog+'<span class="bucket-toggle">▼</span></div>'+
       '</div>'+
       '<div class="bucket-body">'+rows+'</div>'+
     '</div>';
   }).join("");
 
-  document.getElementById('t-view').innerHTML = html || '<div style="color:#4a6080;text-align:center;padding:40px">No tasks match this filter.</div>';
+  document.getElementById('t-view').innerHTML=html||'<div style="color:#4a6080;text-align:center;padding:40px">No tasks match this filter.</div>';
 }
 renderTasks();
 </script>
