@@ -136,7 +136,7 @@ td{padding:10px 12px;vertical-align:middle}
   <div class="hdr">
     <div class="eyebrow">Class of 1997 · Reunion Fund</div>
     <h1>💰 Kitty Tracker</h1>
-    <div class="sub">Canara SB · A/c ···3692 · As of 14 Jun 2026</div>
+    <div class="sub">Canara SB · A/c ···3692 · As of 17 Jun 2026</div>
   </div>
   <div class="stats" id="k-stats"></div>
   <div class="itabs">
@@ -168,11 +168,11 @@ td{padding:10px 12px;vertical-align:middle}
     <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="234500" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="60" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div><div class="brow-right"><input class="binp" type="number" id="b-contrib" value="46" oninput="renderBudget()"/></div></div>
-    <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="5000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="3000" oninput="renderBudget()"/></div></div>
   </div>
   <div class="bsec">
     <div class="bsec-title">Fixed Expenses</div>
-    <div class="brow"><div><div class="brow-label">Photography</div></div><div class="brow-right"><input class="binp" type="number" id="b-photo" value="15000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Photography</div></div><div class="brow-right"><input class="binp" type="number" id="b-photo" value="24000" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Local Transport</div></div><div class="brow-right"><input class="binp" type="number" id="b-transport" value="5000" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Decoration</div></div><div class="brow-right"><input class="binp" type="number" id="b-decor" value="5000" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Banner / Photo Booth</div></div><div class="brow-right"><input class="binp" type="number" id="b-banner" value="5000" oninput="renderBudget()"/></div></div>
@@ -186,7 +186,7 @@ td{padding:10px 12px;vertical-align:middle}
   </div>
   <div class="bsec">
     <div class="bsec-title">Contingency / Misc</div>
-    <div class="brow"><div><div class="brow-label">Reserve</div></div><div class="brow-right"><input class="binp" type="number" id="b-misc" value="50000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Reserve</div></div><div class="brow-right"><input class="binp" type="number" id="b-misc" value="25000" oninput="renderBudget()"/></div></div>
   </div>
   <div class="footer">Budget Planner · Class of '97 · 25 Jul 2026</div>
 </div>
@@ -273,7 +273,12 @@ var E=[
   {id:43,date:"2026-06-10",name:"Vimal",roll:"97E30",type:"IN",amount:2000,note:"Contribution"},
   {id:44,date:"2026-06-11",name:"Harihara Subramanian",roll:"97E29",type:"IN",amount:5000,note:"Contribution"},
   {id:45,date:"2026-06-11",name:"Joney Tilak",roll:"97C06",type:"IN",amount:5000,note:"Contribution"},
-  {id:46,date:"2026-06-13",name:"VD Ashok",roll:"97M35",type:"IN",amount:3000,note:"Contribution"}
+  {id:46,date:"2026-06-13",name:"VD Ashok",roll:"97M35",type:"IN",amount:3000,note:"Contribution"},
+  {id:47,date:"2026-06-14",name:"Ramesh Babu",roll:"97E41",type:"IN",amount:2000,note:"Contribution"},
+  {id:48,date:"2026-06-16",name:"Krishna Kumar",roll:"97E54",type:"IN",amount:3000,note:"Contribution"},
+  {id:49,date:"2026-06-16",name:"Mohideen",roll:"97E57",type:"IN",amount:3000,note:"Contribution"},
+  {id:50,date:"2026-06-16",name:"Lakshmi",roll:"97E08",type:"IN",amount:3000,note:"Contribution"},
+  {id:51,date:"2026-06-17",name:"Vasanth T",roll:"97M61",type:"IN",amount:3000,note:"Contribution"}
 ];
 var ktab="ledger";
 function fmtK(n){return "Rs."+Number(n).toLocaleString("en-IN")}
@@ -332,8 +337,8 @@ var BUCKETS = [
     tasks:[
       {id:"b1", title:"Post: Revised contribution amount",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-17",
-       note:"Send in SACOE group in the next couple of days."},
+       status:"done", deadline:"2026-06-17",
+       note:"Posted."},
       {id:"b2", title:"Post: Last date for contribution",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
        status:"todo", deadline:"2026-06-20",
@@ -389,9 +394,9 @@ var BUCKETS = [
        status:"todo", deadline:"2026-06-23",
        note:""},
       {id:"g5", title:"Souvenir / Memory Book",
-       owners:[{n:"Bala",x:false},{n:"Kathir",x:false},{n:"Need 1 (girls side)",x:true}],
-       status:"blocked", deadline:"2026-07-10",
-       note:"1 volunteer needed from girls side for privacy-sensitive content collection."}
+       owners:[{n:"Bala",x:false},{n:"Kathir",x:false},{n:"Priya",x:false},{n:"SRB",x:false}],
+       status:"inprog", deadline:"2026-07-10",
+       note:""}
     ]
   },
   {
@@ -410,8 +415,8 @@ var BUCKETS = [
        status:"todo", deadline:"2026-06-28",
        note:"Decide by 27/28 Jun weekend."},
       {id:"f4", title:"Cake — Coordinate with sponsor & place order",
-       owners:[{n:"Kathir",x:false},{n:"Need 1",x:true}],
-       status:"blocked", deadline:"2026-07-15",
+       owners:[{n:"Kathir",x:false},{n:"Starvin",x:false}],
+       status:"inprog", deadline:"2026-07-15",
        note:"Confirm cake sponsor and place order well in advance."},
       {id:"f3", title:"Shanthi Bakery — Order tea & snacks",
        owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
@@ -423,7 +428,7 @@ var BUCKETS = [
     id:"college", icon:"🏫", title:"College Coordination",
     tasks:[
       {id:"c1", title:"Logo finalization",
-       owners:[{n:"Kathir",x:false}],
+       owners:[{n:"Bala",x:false}],
        status:"inprog", deadline:"2026-06-21",
        note:"Finalize reunion logo on Gamma this week."},
       {id:"c2", title:"Get invitations ready",
@@ -431,11 +436,11 @@ var BUCKETS = [
        status:"inprog", deadline:"2026-06-25",
        note:""},
       {id:"c3", title:"Visit college — Invite Principal & Secretary",
-       owners:[{n:"Bala",x:false},{n:"Starvin",x:false},{n:"Need 1 more",x:true}],
+       owners:[{n:"Bala",x:false}],
        status:"todo", deadline:"2026-06-28",
        note:"Weekend visit on 27/28 Jun. Also meet photographer, decorator, caterer on same trip."},
       {id:"c4", title:"Meet photographer at college",
-       owners:[{n:"Bala",x:false},{n:"Starvin",x:false}],
+       owners:[{n:"Bala",x:false}],
        status:"todo", deadline:"2026-06-28",
        note:"During 27/28 Jun college visit."},
       {id:"c5", title:"Meet decorator at college",
@@ -452,17 +457,17 @@ var BUCKETS = [
     id:"events", icon:"📅", title:"Events & Activities",
     tasks:[
       {id:"e1", title:"Form events committee",
-       owners:[{n:"Kathir (Mech)",x:false},{n:"Need 1 (EEE)",x:true},{n:"Need 1 (CSE)",x:true}],
+       owners:[{n:"Kathir (Mech)",x:false},{n:"Bala",x:false},{n:"Bharathy (EEE)",x:false},{n:"Need 1 (CSE)",x:true}],
        status:"blocked", deadline:"2026-06-25",
-       note:"One rep needed from EEE and one from CSE to join Kathir (Mech)."},
+       note:"One rep still needed from CSE."},
       {id:"e2", title:"Plan the full day schedule",
        owners:[{n:"Events Committee",x:false}],
        status:"todo", deadline:"2026-07-05",
        note:"Map out timeline for the entire day — arrivals, sessions, lunch, activities, group photo, closing."},
       {id:"e3", title:"Plan games & activities",
-       owners:[{n:"Bala",x:false},{n:"Need 2 more",x:true}],
-       status:"blocked", deadline:"2026-07-10",
-       note:"2 more volunteers needed. Think icebreakers, team games, cultural items."}
+       owners:[{n:"Events Committee",x:false}],
+       status:"todo", deadline:"2026-07-10",
+       note:"Icebreakers, team games, cultural items."}
     ]
   },
   {
@@ -475,11 +480,11 @@ var BUCKETS = [
       {id:"v3", title:"Local transport coordination",
        owners:[{n:"Need 2 people",x:true}],
        status:"blocked", deadline:"2026-07-15",
-       note:"Station/airport pickups and inter-venue movement on event day."},
+       note:"For organizer logistics on event day — not pickup/drop for attendees."},
       {id:"v1", title:"Hall arrangement & decoration",
-       owners:[{n:"Need at least 1",x:true}],
-       status:"blocked", deadline:"2026-07-25",
-       note:"No owner yet — critical event-day task. Includes welcome board and overall setup."},
+       owners:[{n:"Organizing Committee",x:false}],
+       status:"todo", deadline:"2026-07-25",
+       note:"Includes welcome board and overall setup."},
       {id:"v2", title:"Photo booth setup",
        owners:[{n:"Need 1",x:true}],
        status:"blocked", deadline:"2026-07-25",
