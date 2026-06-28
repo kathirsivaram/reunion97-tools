@@ -136,7 +136,7 @@ td{padding:10px 12px;vertical-align:middle}
   <div class="hdr">
     <div class="eyebrow">Class of 1997 · Reunion Fund</div>
     <h1>💰 Kitty Tracker</h1>
-    <div class="sub">Canara SB · A/c ···3692 · As of 17 Jun 2026</div>
+    <div class="sub">Canara SB · A/c ···3692 · As of 28 Jun 2026</div>
   </div>
   <div class="stats" id="k-stats"></div>
   <div class="itabs">
@@ -165,9 +165,9 @@ td{padding:10px 12px;vertical-align:middle}
   <div style="margin-top:16px"></div>
   <div class="bsec">
     <div class="bsec-title">Key Inputs</div>
-    <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="249500" oninput="renderBudget()"/></div></div>
-    <div class="brow"><div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="60" oninput="renderBudget()"/></div></div>
-    <div class="brow"><div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div><div class="brow-right"><input class="binp" type="number" id="b-contrib" value="46" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="265242" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Expected Headcount</div><div class="brow-sub">People attending</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="70" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Contributors So Far</div><div class="brow-sub">Unique contributors paid</div></div><div class="brow-right"><input class="binp" type="number" id="b-contrib" value="56" oninput="renderBudget()"/></div></div>
     <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for projected kitty</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="3000" oninput="renderBudget()"/></div></div>
   </div>
   <div class="bsec">
@@ -274,19 +274,24 @@ var E=[
   {id:44,date:"2026-06-11",name:"Harihara Subramanian",roll:"97E29",type:"IN",amount:5000,note:"Contribution"},
   {id:45,date:"2026-06-11",name:"Joney Tilak",roll:"97C06",type:"IN",amount:5000,note:"Contribution"},
   {id:46,date:"2026-06-13",name:"VD Ashok",roll:"97M35",type:"IN",amount:3000,note:"Contribution"},
-  {id:47,date:"2026-06-14",name:"Ramesh Babu",roll:"97E41",type:"IN",amount:2000,note:"Contribution"},
-  {id:48,date:"2026-06-16",name:"Ramesh Babu",roll:"97E41",type:"IN",amount:1000,note:"Contribution"},
-  {id:49,date:"2026-06-16",name:"Krishna Kumar",roll:"97E54",type:"IN",amount:3000,note:"Contribution"},
-  {id:50,date:"2026-06-16",name:"Mohideen",roll:"97E57",type:"IN",amount:3000,note:"Contribution"},
-  {id:51,date:"2026-06-16",name:"Lakshmi",roll:"97E08",type:"IN",amount:3000,note:"Contribution"},
-  {id:52,date:"2026-06-17",name:"Vasanth T",roll:"97M61",type:"IN",amount:3000,note:"Contribution"}
+  {id:47,date:"2026-06-14",name:"Ramesh Babu",roll:"97E41",type:"IN",amount:3000,note:"Contribution"},
+  {id:48,date:"2026-06-16",name:"Krishna Kumar",roll:"97E54",type:"IN",amount:3000,note:"Contribution"},
+  {id:49,date:"2026-06-16",name:"Mohideen",roll:"97E57",type:"IN",amount:3000,note:"Contribution"},
+  {id:50,date:"2026-06-16",name:"Lakshmi",roll:"97E08",type:"IN",amount:3000,note:"Contribution"},
+  {id:51,date:"2026-06-17",name:"Vasanth T",roll:"97M61",type:"IN",amount:3000,note:"Contribution"},
+  {id:52,date:"2026-06-18",name:"Maria Fredrick Vijay",roll:"97E56",type:"IN",amount:3000,note:"Contribution"},
+  {id:53,date:"2026-06-22",name:"Nambirajan",roll:"97M23",type:"IN",amount:3000,note:"Contribution"},
+  {id:54,date:"2026-06-26",name:"Ganesh Prabhu",roll:"97E27",type:"IN",amount:3000,note:"Contribution"},
+  {id:55,date:"2026-06-27",name:"Krishnaveni G",roll:"97E55",type:"IN",amount:3000,note:"Contribution"},
+  {id:56,date:"2026-06-27",name:"Umadevi M",roll:"97E63",type:"IN",amount:3000,note:"Contribution"},
+  {id:57,date:"2026-06-28",name:"SB Interest",roll:"",type:"INTEREST",amount:742,note:"Interest for 28-Mar to 27-Jun 2026"}
 ];
 var ktab="ledger";
 function fmtK(n){return "Rs."+Number(n).toLocaleString("en-IN")}
 function fdate(d){var m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],p=d.split("-");return parseInt(p[2])+" "+m[parseInt(p[1])-1]+" '26"}
 function setKittyTab(t){ktab=t;document.querySelectorAll('.itb').forEach(function(b,i){b.classList.toggle('active',(i===0&&t==='ledger')||(i===1&&t==='summary'))});renderKitty()}
 function renderKitty(){
-  var tin=E.filter(function(e){return e.type==="IN"}).reduce(function(s,e){return s+e.amount},0);
+  var tin=E.filter(function(e){return e.type==="IN"||e.type==="INTEREST"}).reduce(function(s,e){return s+e.amount},0);
   var tout=E.filter(function(e){return e.type==="OUT"}).reduce(function(s,e){return s+e.amount},0);
   var bal=tin-tout,C={};
   E.filter(function(e){return e.type==="IN"}).forEach(function(e){if(!C[e.name])C[e.name]={name:e.name,roll:e.roll,total:0};C[e.name].total+=e.amount});
@@ -294,8 +299,10 @@ function renderKitty(){
   var view=document.getElementById("k-view");
   if(ktab==="ledger"){
     var sorted=E.slice().sort(function(a,b){return a.date.localeCompare(b.date)}),run=0;
-    var rows=sorted.map(function(e){run+=e.type==="IN"?e.amount:-e.amount;var rc=e.roll?'<span class="rb">'+e.roll+'</span>':'<span class="nn">-</span>';var ac=e.type==="IN"?"#34d399":"#f87171",ap=e.type==="IN"?"+":"-";var bc=e.type==="IN"?"bin":"bout",bt=e.type==="IN"?"IN":"OUT";return '<tr><td class="dd">'+fdate(e.date)+'</td><td class="dn">'+e.name+'</td><td>'+rc+'</td><td><span class="badge '+bc+'">'+bt+'</span></td><td class="da" style="color:'+ac+'">'+ap+fmtK(e.amount)+'</td><td class="dr">'+fmtK(run)+'</td><td class="dn2">'+(e.note||"")+'</td></tr>'}).join("");
-    view.innerHTML='<div class="tw"><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Type</th><th>Amount</th><th>Balance</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+    var rows=sorted.map(function(e){run+=e.type==="IN"||e.type==="INTEREST"?e.amount:(e.type==="OUT"?-e.amount:0);var rc=e.roll?'<span class="rb">'+e.roll+'</span>':'<span class="nn">-</span>';var ac=e.type==="IN"||e.type==="INTEREST"?"#34d399":"#f87171",ap=e.type==="IN"||e.type==="INTEREST"?"+":"-";var bc=e.type==="IN"?"bin":(e.type==="INTEREST"?"bin":"bout"),bt=e.type==="IN"?"IN":(e.type==="INTEREST"?"INT":"OUT");return '<tr><td class="dd">'+fdate(e.date)+'</td><td class="dn">'+e.name+'</td><td>'+rc+'</td><td><span class="badge '+bc+'">'+bt+'</span></td><td class="da" style="color:'+ac+'">'+ap+fmtK(e.amount)+'</td><td class="dr">'+fmtK(run)+'</td><td class="dn2">'+(e.note||"")+'</td></tr>'}).join("");
+    var intEntry=E.find(function(e){return e.type==="INTEREST"});
+    var intBlock=intEntry?'<div style="margin-top:10px;background:#1a2e47;border:1.5px solid #2e4060;border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:11px;color:#7dd3fc;font-family:DM Mono,monospace;letter-spacing:1px">SB INTEREST CREDITED</div><div style="font-size:11px;color:#64748b;margin-top:2px">'+intEntry.note+'</div></div><div style="font-family:DM Mono,monospace;font-weight:700;color:#34d399;font-size:15px">+Rs.'+intEntry.amount.toLocaleString("en-IN")+'</div></div>':'';
+    view.innerHTML='<div class="tw"><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Type</th><th>Amount</th><th>Balance</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+intBlock
   } else {
     var cards=Object.values(C).sort(function(a,b){return b.total-a.total}).map(function(c){var rl=c.roll?'<div class="smr">'+c.roll+'</div>':'<div class="smnr">Roll not recorded</div>';return '<div class="smc"><div><div class="smn">'+c.name+'</div>'+rl+'</div><div class="sma">'+fmtK(c.total)+'</div></div>'}).join("");
     view.innerHTML='<div class="summary">'+cards+'</div>'
@@ -342,19 +349,19 @@ var BUCKETS = [
        note:"Posted."},
       {id:"b2", title:"Post: Last date for contribution",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-20",
-       note:"Announce contribution deadline clearly."},
+       status:"done", deadline:"2026-06-20",
+       note:"Posted."},
       {id:"b3", title:"Poll: Veg / Non-Veg count",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-22",
+       status:"todo", deadline:"2026-07-12",
        note:"Post vote/poll in group for food preference count."},
       {id:"b4", title:"Post: Call for sponsorships",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-25",
+       status:"todo", deadline:"2026-06-29",
        note:"Ask if anyone wants to sponsor any part of the event."},
       {id:"b5", title:"Post: Entrepreneurs — stalls & speaking slots",
        owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-25",
+       status:"todo", deadline:"2026-07-10",
        note:"Invite entrepreneur classmates to reach out if interested in a stall or short talk."}
     ]
   },
@@ -365,56 +372,36 @@ var BUCKETS = [
        owners:[{n:"Kathir",x:false},{n:"SRB",x:false},{n:"Bala",x:false}],
        status:"done", deadline:"2026-06-17",
        note:"Decided."},
-      {id:"k2", title:"Announce last date for contribution",
-       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-20",
-       note:"Coordinate with broadcasting team."},
-      {id:"k3", title:"Call for sponsorships",
+      {id:"k2", title:"Final follow-up on contributions",
        owners:[{n:"Kathir",x:false},{n:"SRB",x:false}],
-       status:"todo", deadline:"2026-06-25",
-       note:"Reach out to classmates who may want to sponsor an item or segment."}
+       status:"todo", deadline:"2026-07-10",
+       note:"Last nudge to outstanding contributors before cutoff."}
     ]
   },
   {
     id:"gifts", icon:"🎁", title:"Gifts & Mementos",
     tasks:[
-      {id:"g1", title:"Jute Bag — Confirm vendor & design",
+      {id:"g1", title:"Tote Bag — Verify sample, confirm quantity & place final order",
        owners:[{n:"SRB",x:false},{n:"Muthulakshmi",x:false}],
-       status:"inprog", deadline:"2026-06-21",
-       note:"Finalize size, design, features, price by this weekend. Place order early next week."},
-      {id:"g3", title:"3rd Gift — Finalize by weekend",
-       owners:[{n:"Bala",x:false}],
-       status:"inprog", deadline:"2026-06-21",
-       note:"Confirm item, vendor and cost per head."},
-      {id:"g2", title:"Jute Bag — Place order",
-       owners:[{n:"SRB",x:false},{n:"Muthulakshmi",x:false}],
-       status:"todo", deadline:"2026-06-23",
-       note:"Once design and headcount confirmed."},
-      {id:"g4", title:"3rd Gift — Place order",
-       owners:[{n:"Bala",x:false}],
-       status:"todo", deadline:"2026-06-23",
-       note:""},
-      {id:"g5", title:"Souvenir / Memory Book",
-       owners:[{n:"Bala",x:false},{n:"Kathir",x:false},{n:"Priya",x:false},{n:"SRB",x:false}],
        status:"inprog", deadline:"2026-07-10",
+       note:"New sample ordered. Verify quantity and place final order before 10 Jul."},
+      {id:"g2", title:"Cap (3rd Gift) — Place order",
+       owners:[{n:"Bala",x:false}],
+       status:"todo", deadline:"2026-07-10",
+       note:"Order before 10 Jul."},
+      {id:"g3", title:"Souvenir / Memory Book",
+       owners:[{n:"Bala",x:false},{n:"Kathir",x:false},{n:"Priya",x:false},{n:"SRB",x:false}],
+       status:"inprog", deadline:"2026-07-19",
        note:""}
     ]
   },
   {
     id:"food", icon:"🍽️", title:"Food & Catering",
     tasks:[
-      {id:"f1", title:"Get quotes for lunch buffet",
+      {id:"f1", title:"Finalize lunch buffet vendor",
        owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
-       status:"inprog", deadline:"2026-06-21",
-       note:"Get quotes, share menus with organizing committee."},
-      {id:"f5", title:"Poll: Collect Veg / Non-Veg count",
-       owners:[{n:"SRB",x:false},{n:"Marshia",x:false}],
-       status:"todo", deadline:"2026-06-22",
-       note:"Post poll in SACOE group to collect food preference count."},
-      {id:"f2", title:"Finalize lunch buffet vendor",
-       owners:[{n:"Kathir",x:false},{n:"Seethamani",x:false}],
-       status:"todo", deadline:"2026-06-28",
-       note:"Decide by 27/28 Jun weekend."},
+       status:"inprog", deadline:"2026-07-05",
+       note:"Quotes received from NSK, Ragland Arasan. Awaiting Copper Leaf. Finalize by next Saturday."},
       {id:"f4", title:"Cake — Coordinate with sponsor & place order",
        owners:[{n:"Kathir",x:false},{n:"Starvin",x:false}],
        status:"inprog", deadline:"2026-07-15",
@@ -430,40 +417,40 @@ var BUCKETS = [
     tasks:[
       {id:"c1", title:"Logo finalization",
        owners:[{n:"Bala",x:false}],
-       status:"inprog", deadline:"2026-06-21",
-       note:"Finalize reunion logo on Gamma this week."},
+       status:"done", deadline:"2026-06-21",
+       note:"Finalized."},
       {id:"c2", title:"Get invitations ready",
        owners:[{n:"Bala",x:false}],
-       status:"inprog", deadline:"2026-06-25",
-       note:""},
+       status:"done", deadline:"2026-06-25",
+       note:"Ordered."},
       {id:"c3", title:"Visit college — Invite Principal & Secretary",
        owners:[{n:"Bala",x:false}],
-       status:"todo", deadline:"2026-06-28",
-       note:"Weekend visit on 27/28 Jun. Also meet photographer, decorator, caterer on same trip."},
+       status:"inprog", deadline:"2026-07-08",
+       note:"Planned for 7th and 8th July."},
       {id:"c4", title:"Meet photographer at college",
-       owners:[{n:"Bala",x:false}],
-       status:"todo", deadline:"2026-06-28",
-       note:"During 27/28 Jun college visit."},
+       owners:[{n:"Kathir",x:false}],
+       status:"todo", deadline:"2026-07-03",
+       note:"Ilango, Palayamkottai (6383850140). Meeting on 3 Jul."},
       {id:"c5", title:"Meet decorator at college",
        owners:[{n:"Bala",x:false}],
-       status:"todo", deadline:"2026-06-28",
-       note:"During 27/28 Jun college visit."},
+       status:"todo", deadline:"2026-07-08",
+       note:"During Jul 7/8 college visit."},
       {id:"c6", title:"Meet caterer at college",
-       owners:[{n:"Bala",x:false},{n:"Seethamani",x:false}],
-       status:"todo", deadline:"2026-06-28",
-       note:"If possible during 27/28 Jun visit."}
+       owners:[{n:"Bala",x:false}],
+       status:"todo", deadline:"2026-07-08",
+       note:"During Jul 7/8 college visit."}
     ]
   },
   {
     id:"events", icon:"📅", title:"Events & Activities",
     tasks:[
       {id:"e1", title:"Form events committee",
-       owners:[{n:"Kathir (Mech)",x:false},{n:"Bala",x:false},{n:"Bharathy (EEE)",x:false},{n:"Need 1 (CSE)",x:true}],
-       status:"blocked", deadline:"2026-06-25",
+       owners:[{n:"Kathir (Mech)",x:false},{n:"Bala",x:false},{n:"Bharathy (EEE)",x:false},{n:"Vijayprathaban",x:false},{n:"Need 1 (CSE)",x:true}],
+       status:"blocked", deadline:"2026-07-10",
        note:"One rep still needed from CSE."},
       {id:"e2", title:"Plan the full day schedule",
        owners:[{n:"Events Committee",x:false}],
-       status:"todo", deadline:"2026-07-05",
+       status:"todo", deadline:"2026-07-10",
        note:"Map out timeline for the entire day — arrivals, sessions, lunch, activities, group photo, closing."},
       {id:"e3", title:"Plan games & activities",
        owners:[{n:"Events Committee",x:false}],
@@ -476,8 +463,8 @@ var BUCKETS = [
     tasks:[
       {id:"v4", title:"Photo & video — book photographer",
        owners:[{n:"Kathir",x:false}],
-       status:"inprog", deadline:"2026-06-28",
-       note:"Confirm photographer and videographer."},
+       status:"done", deadline:"2026-06-28",
+       note:"Booked: Ilango, Palayamkottai (6383850140)."},
       {id:"v3", title:"Local transport coordination",
        owners:[{n:"Need 2 people",x:true}],
        status:"blocked", deadline:"2026-07-15",
@@ -487,9 +474,9 @@ var BUCKETS = [
        status:"todo", deadline:"2026-07-25",
        note:"Includes welcome board and overall setup."},
       {id:"v2", title:"Photo booth setup",
-       owners:[{n:"Need 1",x:true}],
-       status:"blocked", deadline:"2026-07-25",
-       note:"Coordinate props, backdrop and placement."},
+       owners:[{n:"CSE Prabhakaran",x:false}],
+       status:"inprog", deadline:"2026-07-25",
+       note:"CSE Prabhakaran working on it."},
       {id:"v5", title:"Photo & video — event day coordination",
        owners:[{n:"Kathir",x:false}],
        status:"todo", deadline:"2026-07-25",
