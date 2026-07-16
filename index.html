@@ -148,7 +148,7 @@ td{padding:10px 12px;vertical-align:middle}
   <div class="hdr">
     <div class="eyebrow">Class of 1997 · Reunion Fund</div>
     <h1>💰 Kitty Tracker</h1>
-    <div class="sub">Canara SB · A/c ···3692 · As of 09 Jul 2026</div>
+    <div class="sub">Canara SB · A/c ···3692 · As of 16 Jul 2026</div>
   </div>
   <div class="stats" id="k-stats"></div>
   <div class="itabs">
@@ -177,9 +177,9 @@ td{padding:10px 12px;vertical-align:middle}
   <div style="margin-top:16px"></div>
   <div class="bsec">
     <div class="bsec-title">Key Inputs</div>
-    <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance · A/c ···3692</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="254312" oninput="renderBudget()"/></div></div>
-    <div class="brow"><div><div class="brow-label">Expected Contributors</div><div class="brow-sub">Total expected to pay · 76 paid so far</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="80" oninput="renderBudget()"/></div></div>
-    <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for remaining 4 contributors</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="3000" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Current Kitty</div><div class="brow-sub">Canara SB closing balance · A/c ···3692</div></div><div class="brow-right"><input class="binp" type="number" id="b-kitty" value="247912" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Expected Contributors</div><div class="brow-sub">Total expected to pay · 80 paid so far</div></div><div class="brow-right"><input class="binp" type="number" id="b-heads" value="80" oninput="renderBudget()"/></div></div>
+    <div class="brow"><div><div class="brow-label">Standard Contribution</div><div class="brow-sub">Assumed for remaining 0 contributors</div></div><div class="brow-right"><input class="binp" type="number" id="b-std" value="3000" oninput="renderBudget()"/></div></div>
   </div>
 
   <div class="bsec">
@@ -195,8 +195,14 @@ td{padding:10px 12px;vertical-align:middle}
         <span class="pend-tag">Partial</span>
       </div>
       <div class="item-row">
-        <span>Videography</span><span>—</span>
-        <span><input class="binp" type="number" id="b-video" value="10000" oninput="renderBudget()" style="width:80px"/></span>
+        <span>Candid Video</span><span>—</span>
+        <span><input class="binp" type="number" id="b-video-candid" value="10000" oninput="renderBudget()" style="width:80px"/></span>
+        <span class="paid-amt">₹0</span><span>—</span>
+        <span class="pend-tag">Pending</span>
+      </div>
+      <div class="item-row">
+        <span>Traditional Video</span><span>—</span>
+        <span><input class="binp" type="number" id="b-video-trad" value="6500" oninput="renderBudget()" style="width:80px"/></span>
         <span class="paid-amt">₹0</span><span>—</span>
         <span class="pend-tag">Pending</span>
       </div>
@@ -205,6 +211,11 @@ td{padding:10px 12px;vertical-align:middle}
         <span><input class="binp" type="number" id="b-led" value="10000" oninput="renderBudget()" style="width:80px"/></span>
         <span class="paid-amt">₹0</span><span>—</span>
         <span class="pend-tag">Pending</span>
+      </div>
+      <div class="item-row">
+        <span>Photo Frames</span><span style="font-size:11px;color:#64748b">Ilango, PKT · 80 pcs</span>
+        <span>₹20,000</span><span class="paid-amt">₹5,000</span>
+        <span class="pend-tag">Partial</span>
       </div>
     </div>
     <div class="btotal-row"><div class="btotal-label">Total Media</div><div class="btotal-val" id="b-total-media" style="color:#f87171"></div></div>
@@ -237,14 +248,15 @@ td{padding:10px 12px;vertical-align:middle}
 
   <div class="bsec">
     <div class="bsec-title">🍽️ Food &amp; Catering</div>
+    <div style="background:#1a2e47;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:11px;color:#fcd34d;font-family:DM Mono,monospace">⚠ Copper Leaf advance ₹10,000 — refund in discussion</div>
     <div class="item-table">
       <div class="item-header">
         <span>Item</span><span>Qty</span><span>Rate</span><span>Total</span><span>Status</span>
       </div>
       <div class="item-row">
-        <span>Lunch Buffet <span style="font-size:10px;color:#34d399">✓ ₹10,000 adv. paid</span></span>
+        <span>Lunch Buffet — Samsons Kitchen <span style="font-size:10px;color:#34d399">✓ ₹10,000 adv. paid</span></span>
         <span><input class="binp" type="number" id="b-food-heads" value="100" oninput="renderBudget()" style="width:55px"/></span>
-        <span><input class="binp" type="number" id="b-food" value="1120" oninput="renderBudget()" style="width:70px"/></span>
+        <span><input class="binp" type="number" id="b-food" value="575" oninput="renderBudget()" style="width:70px"/></span>
         <span id="b-food-sub" style="font-family:DM Mono,monospace;font-size:12px;color:#f87171"></span>
         <span class="pend-tag">Pending</span>
       </div>
@@ -269,7 +281,7 @@ td{padding:10px 12px;vertical-align:middle}
       </div>
       <div class="item-row">
         <span>Decoration</span><span>—</span>
-        <span><input class="binp" type="number" id="b-decor" value="5000" oninput="renderBudget()" style="width:80px"/></span>
+        <span><input class="binp" type="number" id="b-decor" value="10000" oninput="renderBudget()" style="width:80px"/></span>
         <span class="paid-amt">₹0</span><span class="pend-tag">Pending</span>
       </div>
       <div class="item-row">
@@ -279,13 +291,18 @@ td{padding:10px 12px;vertical-align:middle}
       </div>
       <div class="item-row">
         <span>Local Transport</span><span style="font-size:11px;color:#64748b">Organizer only</span>
-        <span><input class="binp" type="number" id="b-transport" value="5000" oninput="renderBudget()" style="width:80px"/></span>
+        <span><input class="binp" type="number" id="b-transport" value="3000" oninput="renderBudget()" style="width:80px"/></span>
         <span class="paid-amt">₹0</span><span class="pend-tag">Pending</span>
       </div>
       <div class="item-row">
         <span>Extension Boxes</span><span style="font-size:11px;color:#64748b">Event day setup</span>
         <span>₹1,535</span>
         <span class="paid-amt">₹1,535</span><span class="paid-tag">✓ Paid</span>
+      </div>
+      <div class="item-row">
+        <span>Posters</span><span style="font-size:11px;color:#64748b">Printing</span>
+        <span>₹2,400</span>
+        <span class="paid-amt">₹2,400</span><span class="paid-tag">✓ Paid</span>
       </div>
     </div>
     <div class="btotal-row"><div class="btotal-label">Total Venue</div><div class="btotal-val" id="b-total-venue" style="color:#f87171"></div></div>
@@ -405,7 +422,7 @@ var E=[
   {id:68,date:"2026-07-05",name:"Return Gifts",roll:"",type:"OUT",amount:63000,note:"Return gifts + Standee"},
   {id:69,date:"2026-07-05",name:"Meenakumari S",roll:"97C13",type:"IN",amount:3000,note:"Contribution"},
   {id:70,date:"2026-07-05",name:"Gifts for Staff",roll:"",type:"OUT",amount:3395,note:"Staff gifts"},
-  {id:71,date:"2026-07-06",name:"Buffet Advance",roll:"",type:"OUT",amount:10000,note:"Food & Catering advance"},
+  {id:71,date:"2026-07-06",name:"Buffet Advance (1st)",roll:"",type:"OUT",amount:10000,note:"Food & Catering advance — 1st (Copper Leaf — refund in discussion)"},
   {id:72,date:"2026-07-06",name:"Sureshkumar J",roll:"97C31",type:"IN",amount:10000,note:"Contribution"},
   {id:73,date:"2026-07-06",name:"Little Anand S",roll:"97M47",type:"IN",amount:3000,note:"Contribution (via Little Anand group transfer)"},
   {id:74,date:"2026-07-06",name:"Vijayadurai J",roll:"97M63",type:"IN",amount:3000,note:"Contribution (via Little Anand group transfer)"},
@@ -416,7 +433,14 @@ var E=[
   {id:79,date:"2026-07-07",name:"Seethamani P",roll:"97M57",type:"IN",amount:3000,note:"Contribution (via Little Anand)"},
   {id:80,date:"2026-07-09",name:"Extension Boxes",roll:"",type:"OUT",amount:1535,note:"Extension boxes"},
   {id:81,date:"2026-07-09",name:"Rajendran M",roll:"97E49",type:"IN",amount:3000,note:"Contribution"},
-  {id:82,date:"2026-06-28",name:"SB Interest",roll:"",type:"INTEREST",amount:742,note:"Interest for 28-Mar to 27-Jun 2026"}
+  {id:82,date:"2026-07-13",name:"Frames Advance",roll:"",type:"OUT",amount:5000,note:"Advance to Ilango for photo frames"},
+  {id:83,date:"2026-07-14",name:"Parivalavan M",roll:"97M25",type:"IN",amount:3000,note:"Contribution"},
+  {id:84,date:"2026-07-14",name:"Senthil Kumar A",roll:"97M31",type:"IN",amount:2000,note:"Contribution"},
+  {id:85,date:"2026-07-15",name:"Reenus Jesu Raja G",roll:"97M27",type:"IN",amount:3000,note:"Contribution"},
+  {id:86,date:"2026-07-15",name:"Posters",roll:"",type:"OUT",amount:2400,note:"Poster printing (Rs.1,800 + Rs.300 + Rs.300)"},
+  {id:87,date:"2026-07-16",name:"Mathinakani M",roll:"97C40",type:"IN",amount:3000,note:"Contribution"},
+  {id:88,date:"2026-07-16",name:"Buffet Advance (2nd)",roll:"",type:"OUT",amount:10000,note:"Food & Catering advance — 2nd (Samsons Kitchen)"},
+  {id:89,date:"2026-06-28",name:"SB Interest",roll:"",type:"INTEREST",amount:742,note:"Interest for 28-Mar to 27-Jun 2026"}
 ]
 var ktab="ledger";
 function fmtK(n){return "Rs."+Number(n).toLocaleString("en-IN")}
@@ -447,11 +471,12 @@ function fmtB(n){return "Rs."+Number(Math.round(n)).toLocaleString("en-IN")}
 function gv(id){return parseFloat(document.getElementById(id).value)||0}
 function renderBudget(){
   var kitty=gv('b-kitty'),heads=gv('b-heads'),std=gv('b-std');
-  var contribSoFar=76; // auto-derived from kitty
+  var contribSoFar=80; // auto-derived from kitty
 
-  // Photography & Media: paid ₹1,000 + pending inputs
-  var photoPaid=1000, photoPending=gv('b-photo'), video=gv('b-video'), led=gv('b-led');
-  var totalMedia=photoPaid+photoPending+video+led;
+  // Photography & Media: paid ₹1,000 photo adv + ₹5,000 frames adv + pending inputs
+  var photoPaid=1000, photoFramesPaid=5000;
+  var photoPending=gv('b-photo'), videoC=gv('b-video-candid'), videoT=gv('b-video-trad'), led=gv('b-led');
+  var totalMedia=photoPaid+photoPending+videoC+videoT+led+photoFramesPaid+15000; // frames: 5k paid + 15k pending
 
   // Gifts: paid ₹63,000 (caps+bags+standee) + pending fixed amounts
   var giftsPaid=63000, photoFrame=20000, staffGifts=3395;
@@ -463,7 +488,7 @@ function renderBudget(){
 
   // Venue: all pending
   var decor=gv('b-decor'),banner=gv('b-banner'),trans=gv('b-transport');
-  var totalVenue=decor+banner+trans+1535;
+  var totalVenue=decor+banner+trans+1535+2400; // incl extension boxes + posters (both paid)
 
   // Reserve
   var misc=gv('b-misc');
@@ -471,7 +496,7 @@ function renderBudget(){
   // Grand total = all spending (paid + pending)
   var totalBudget=totalMedia+totalGifts+totalFood+totalVenue+misc;
   // Already spent from bank
-  var alreadyPaid=78930; // photo adv ₹1k + gifts ₹63k + staff gifts ₹3,395 + buffet adv ₹10k + extension ₹1,535
+  var alreadyPaid=96330; // photo adv ₹1k + gifts ₹63k + staff gifts ₹3,395 + buffet adv 1st ₹10k + ext boxes ₹1,535 + frames adv ₹5k + posters ₹2,400 + buffet adv 2nd ₹10k // photo adv ₹1k + gifts ₹63k + staff gifts ₹3,395 + buffet adv ₹10k + extension ₹1,535
   // Remaining to spend
   var pendingSpend=totalBudget-alreadyPaid;
   // Projected kitty
